@@ -43,4 +43,5 @@ class Weekday: NSObject, NSCoding {
         let subjects = aDecoder.decodeObject(forKey: Key.subjects) as! [Subject]
         self.init(title: title, subjects: subjects)
     }
+    
 }
