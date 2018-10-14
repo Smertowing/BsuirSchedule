@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F386C6BE2173BCD7001B8500 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386C6BD2173BCD7001B8500 /* ScheduleTableViewController.swift */; };
 		F3C1652821734C0D0019BC9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C1652721734C0D0019BC9B /* AppDelegate.swift */; };
 		F3C1652A21734C0D0019BC9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C1652921734C0D0019BC9B /* ViewController.swift */; };
 		F3C1652D21734C0D0019BC9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3C1652B21734C0D0019BC9B /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F386C6BD2173BCD7001B8500 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
 		F3C1652421734C0D0019BC9B /* BsuirSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BsuirSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C1652721734C0D0019BC9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3C1652921734C0D0019BC9B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F386C6BF2173BCDC001B8500 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F386C6BD2173BCD7001B8500 /* ScheduleTableViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		F3C1651B21734C0D0019BC9B = {
 			isa = PBXGroup;
 			children = (
@@ -59,8 +69,9 @@
 				F3C1652721734C0D0019BC9B /* AppDelegate.swift */,
 				F3C1652921734C0D0019BC9B /* ViewController.swift */,
 				F3C1653B21734C640019BC9B /* Model */,
-				F3C1652B21734C0D0019BC9B /* Main.storyboard */,
+				F386C6BF2173BCDC001B8500 /* ViewControllers */,
 				F3C1652E21734C0E0019BC9B /* Assets.xcassets */,
+				F3C1652B21734C0D0019BC9B /* Main.storyboard */,
 				F3C1653021734C0E0019BC9B /* LaunchScreen.storyboard */,
 				F3C1653321734C0E0019BC9B /* Info.plist */,
 			);
@@ -146,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F386C6BE2173BCD7001B8500 /* ScheduleTableViewController.swift in Sources */,
 				F3C1653A21734C610019BC9B /* groupScheduleJSON.swift in Sources */,
 				F3C1652A21734C0D0019BC9B /* ViewController.swift in Sources */,
 				F3C1652821734C0D0019BC9B /* AppDelegate.swift in Sources */,

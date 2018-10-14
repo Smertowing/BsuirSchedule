@@ -32,7 +32,6 @@ struct StudentGroup: Decodable {
 struct Schedule: Decodable{
     var weekDay: String?
     var schedule: [ScheduleClass]?
-    
 }
 
 struct ScheduleClass: Decodable{
