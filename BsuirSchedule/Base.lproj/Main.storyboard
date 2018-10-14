@@ -9,11 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Schedule Table View Controller-->
         <scene sceneID="tDb-2V-6H7">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsz-hL-0Fj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="oZf-8B-G9H" sceneMemberID="viewController">
+                <tableViewController id="oZf-8B-G9H" customClass="ScheduleTableViewController" customModule="BsuirSchedule" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5CV-6u-7W2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,7 +67,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EfY-jl-WcU">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EfY-jl-WcU">
                                             <rect key="frame" x="0.0" y="6.5" width="12" height="55"/>
                                             <color key="backgroundColor" name="yellow"/>
                                             <constraints>

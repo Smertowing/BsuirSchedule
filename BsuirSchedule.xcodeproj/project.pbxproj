@@ -13,7 +13,6 @@
 		F386C6C72173BEF8001B8500 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386C6C62173BEF8001B8500 /* Subject.swift */; };
 		F386C6C92173BF25001B8500 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386C6C82173BF25001B8500 /* Teacher.swift */; };
 		F3C1652821734C0D0019BC9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C1652721734C0D0019BC9B /* AppDelegate.swift */; };
-		F3C1652A21734C0D0019BC9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C1652921734C0D0019BC9B /* ViewController.swift */; };
 		F3C1652D21734C0D0019BC9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3C1652B21734C0D0019BC9B /* Main.storyboard */; };
 		F3C1652F21734C0E0019BC9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3C1652E21734C0E0019BC9B /* Assets.xcassets */; };
 		F3C1653221734C0E0019BC9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3C1653021734C0E0019BC9B /* LaunchScreen.storyboard */; };
@@ -28,7 +27,6 @@
 		F386C6C82173BF25001B8500 /* Teacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
 		F3C1652421734C0D0019BC9B /* BsuirSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BsuirSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3C1652721734C0D0019BC9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F3C1652921734C0D0019BC9B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F3C1652C21734C0D0019BC9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F3C1652E21734C0E0019BC9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3C1653121734C0E0019BC9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -75,7 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				F3C1652721734C0D0019BC9B /* AppDelegate.swift */,
-				F3C1652921734C0D0019BC9B /* ViewController.swift */,
 				F3C1653B21734C640019BC9B /* Model */,
 				F386C6BF2173BCDC001B8500 /* ViewControllers */,
 				F3C1652E21734C0E0019BC9B /* Assets.xcassets */,
@@ -173,7 +170,6 @@
 				F386C6C32173BEA0001B8500 /* StudSchedule.swift in Sources */,
 				F386C6BE2173BCD7001B8500 /* ScheduleTableViewController.swift in Sources */,
 				F3C1653A21734C610019BC9B /* GroupScheduleJSON.swift in Sources */,
-				F3C1652A21734C0D0019BC9B /* ViewController.swift in Sources */,
 				F386C6C92173BF25001B8500 /* Teacher.swift in Sources */,
 				F3C1652821734C0D0019BC9B /* AppDelegate.swift in Sources */,
 				F386C6C52173BEDD001B8500 /* Weekdays.swift in Sources */,
