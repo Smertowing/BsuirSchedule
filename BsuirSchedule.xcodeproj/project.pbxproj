@@ -12,6 +12,7 @@
 		F3C1652D21734C0D0019BC9B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3C1652B21734C0D0019BC9B /* Main.storyboard */; };
 		F3C1652F21734C0E0019BC9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3C1652E21734C0E0019BC9B /* Assets.xcassets */; };
 		F3C1653221734C0E0019BC9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3C1653021734C0E0019BC9B /* LaunchScreen.storyboard */; };
+		F3C1653A21734C610019BC9B /* groupScheduleJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C1653921734C610019BC9B /* groupScheduleJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		F3C1652E21734C0E0019BC9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3C1653121734C0E0019BC9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3C1653321734C0E0019BC9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3C1653921734C610019BC9B /* groupScheduleJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupScheduleJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +58,21 @@
 			children = (
 				F3C1652721734C0D0019BC9B /* AppDelegate.swift */,
 				F3C1652921734C0D0019BC9B /* ViewController.swift */,
+				F3C1653B21734C640019BC9B /* Model */,
 				F3C1652B21734C0D0019BC9B /* Main.storyboard */,
 				F3C1652E21734C0E0019BC9B /* Assets.xcassets */,
 				F3C1653021734C0E0019BC9B /* LaunchScreen.storyboard */,
 				F3C1653321734C0E0019BC9B /* Info.plist */,
 			);
 			path = BsuirSchedule;
+			sourceTree = "<group>";
+		};
+		F3C1653B21734C640019BC9B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F3C1653921734C610019BC9B /* groupScheduleJSON.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3C1653A21734C610019BC9B /* groupScheduleJSON.swift in Sources */,
 				F3C1652A21734C0D0019BC9B /* ViewController.swift in Sources */,
 				F3C1652821734C0D0019BC9B /* AppDelegate.swift in Sources */,
 			);
