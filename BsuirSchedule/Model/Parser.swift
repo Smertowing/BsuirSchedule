@@ -68,7 +68,9 @@ class Parser {
                             fullName += " "
                             fullName += teacher.middleName ?? ""
                             var photo = #imageLiteral(resourceName: "user")
-                            photo = self.getPhoto(path: teacher.photoLink!) ?? #imageLiteral(resourceName: "user")
+                            if let photoLink = teacher.photoLink {
+                                photo = self.getPhoto(path: photoLink) ?? #imageLiteral(resourceName: "user")
+                            }
                             teachers.append(Teacher(id: teacher.id!, fullName: fullName, photo: photo))
                         }
                         let subjectType = subject.lessonType ?? "Неизвестно"
