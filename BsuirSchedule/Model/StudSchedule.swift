@@ -15,11 +15,10 @@ class StudSchedule: NSObject, NSCoding {
     enum Subgroup: Int {
         case first
         case second
-        case both
     }
     
     var subgroup: Subgroup
-    var schedule = [Weekday]()
+    var schedule: [Weekday] = []
     
     init(title: String, schedule: [Weekday], subgroup: Subgroup) {
         self.title = title
