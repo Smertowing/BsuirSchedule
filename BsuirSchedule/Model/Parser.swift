@@ -56,7 +56,7 @@ class Parser {
                         let title = subject.subject ?? ""
                         let auditory = subject.auditory?.first ?? ""
                         var time = subject.startLessonTime ?? ""
-                        time += ""
+                        time += " "
                         time += subject.endLessonTime ?? ""
                         let weekNumber = subject.weekNumber!.filter { return $0 != 0 }
                         let subgroup = subject.numSubgroup ?? 0

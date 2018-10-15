@@ -37,7 +37,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:20 16:55" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLX-Bd-6Go">
-                                            <rect key="frame" x="20" y="0.0" width="50" height="66.5"/>
+                                            <rect key="frame" x="20" y="0.0" width="50" height="67"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="66" id="3eT-vd-AN0"/>
                                                 <constraint firstAttribute="width" constant="50" id="ii5-05-0UV"/>
