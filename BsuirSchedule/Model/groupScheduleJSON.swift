@@ -1,5 +1,5 @@
 //
-//  groupScheduleJSON.swift
+//  GroupScheduleJSON.swift
 //  BsuirSchedule
 //
 //  Created by Kiryl Holubeu on 10/14/18.
