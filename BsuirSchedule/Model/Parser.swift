@@ -41,7 +41,7 @@ class Parser {
         }
     }
     
-    static func getSchedule(forGroup numGroup: String, subgroup: Subgroup) -> StudSchedule? {
+    static func getSchedule(forGroup numGroup: String, subgroup: Int) -> StudSchedule? {
         guard let scheduleURL: URL = URL(string: "https://students.bsuir.by/api/v1/studentGroup/schedule?studentGroup=\(numGroup)") else {
             return nil
         }

@@ -8,7 +8,11 @@
 
 import Foundation
 
-class Weekday: NSObject, NSCoding {
+class Weekday: NSObject, NSCoding, NSSecureCoding {
+    
+    static var supportsSecureCoding: Bool {
+        return true
+    }
     
     var title: String
     var titleIndex: Int
@@ -28,19 +32,19 @@ class Weekday: NSObject, NSCoding {
         self.subjects = subjects
     }
     
-    private struct Key {
-        static let title = "title"
-        static let subjects = "subjects"
+    private enum Key: String {
+        case title = "title"
+        case subjects = "subjects"
     }
     
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(title, forKey: Key.title)
-        aCoder.encode(subjects, forKey: Key.subjects)
+        aCoder.encode(title, forKey: Key.title.rawValue)
+        aCoder.encode(subjects, forKey: Key.subjects.rawValue)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
-        let title = aDecoder.decodeObject(forKey: Key.title) as! String
-        let subjects = aDecoder.decodeObject(forKey: Key.subjects) as! [Subject]
+        let title = aDecoder.decodeObject(forKey: Key.title.rawValue) as! String
+        let subjects = aDecoder.decodeObject(forKey: Key.subjects.rawValue) as! [Subject]
         self.init(title: title, subjects: subjects)
     }
     

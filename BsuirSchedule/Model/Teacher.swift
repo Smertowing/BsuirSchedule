@@ -8,7 +8,11 @@
 
 import UIKit
 
-class Teacher: NSObject, NSCoding {
+class Teacher: NSObject, NSCoding, NSSecureCoding {
+    
+    static var supportsSecureCoding: Bool {
+        return true
+    }
     
     var photo: UIImage = #imageLiteral(resourceName: "user")
     var id: Int
@@ -20,22 +24,22 @@ class Teacher: NSObject, NSCoding {
         self.fullName = fullName
     }
     
-    private struct Key {
-        static let photo = "photo"
-        static let id = "id"
-        static let fullName = "fio"
+    private enum Key: String {
+        case photo = "photo"
+        case id = "id"
+        case fullName = "fio"
     }
     
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(photo, forKey: Key.photo)
-        aCoder.encode(id, forKey: Key.id)
-        aCoder.encode(fullName, forKey: Key.fullName)
+        aCoder.encode(photo, forKey: Key.photo.rawValue)
+        aCoder.encode(id, forKey: Key.id.rawValue)
+        aCoder.encode(fullName, forKey: Key.fullName.rawValue)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
-        let photo = aDecoder.decodeObject(forKey: Key.photo) as! UIImage
-        let id = aDecoder.decodeInteger(forKey: Key.id)
-        let fio = aDecoder.decodeObject(forKey: Key.fullName) as! String
+        let photo = aDecoder.decodeObject(forKey: Key.photo.rawValue) as! UIImage
+        let id = aDecoder.decodeInteger(forKey: Key.id.rawValue)
+        let fio = aDecoder.decodeObject(forKey: Key.fullName.rawValue) as! String
         self.init(id: id, fullName: fio, photo: photo)
     }
     

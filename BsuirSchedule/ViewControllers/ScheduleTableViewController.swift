@@ -13,14 +13,19 @@ class ScheduleTableViewController: UITableViewController {
     var schedule: StudSchedule?
     
     override func viewDidLoad() {
-        if let studSchedules = Parser.getSchedule(forGroup: ScheduleMain.selectedGroup, subgroup: ScheduleMain.selectedSubgroup) {
-            ScheduleMain.studSchedules.append(studSchedules)
-        }
-        
         super.viewDidLoad()
+        
+        if ScheduleMain.loadData() {
+            print("Hello, world!")
+        } else {
+            if let studSchedules = Parser.getSchedule(forGroup: ScheduleMain.selectedGroup!, subgroup: ScheduleMain.selectedSubgroup!) {
+                ScheduleMain.studSchedules.append(studSchedules)
+            }
+        }
         let schedule = ScheduleMain.studSchedules.filter{$0.title == ScheduleMain.selectedGroup}
         self.schedule = schedule[0]
-  //      self.tableView.reloadData()
+        self.tableView.reloadData()
+        ScheduleMain.saveData()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

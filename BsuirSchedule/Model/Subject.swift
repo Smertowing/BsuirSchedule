@@ -8,8 +8,12 @@
 
 import Foundation
 
-class Subject: NSObject, NSCoding {
+class Subject: NSObject, NSCoding, NSSecureCoding {
     
+    static var supportsSecureCoding: Bool {
+        return true
+    }
+
     var title: String
     var auditory: String
     var time: String
@@ -40,34 +44,34 @@ class Subject: NSObject, NSCoding {
         self.subjectType = subjectType
     }
     
-    private struct Key {
-        static let title = "title"
-        static let auditory = "auditory"
-        static let time = "time"
-        static let teachers = "teachers"
-        static let weekNumber = "weekNumber"
-        static let subgroup = "subgroup"
-        static let subjectType = "subjectType"
+    private enum Key: String {
+        case title = "title"
+        case auditory = "auditory"
+        case time = "time"
+        case teachers = "teachers"
+        case weekNumber = "weekNumber"
+        case subgroup = "subgroup"
+        case subjectType = "subjectType"
     }
     
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(title, forKey: Key.title)
-        aCoder.encode(auditory, forKey: Key.auditory)
-        aCoder.encode(time, forKey: Key.time)
-        aCoder.encode(teachers, forKey: Key.teachers)
-        aCoder.encode(weekNumber, forKey: Key.weekNumber)
-        aCoder.encode(subgroup, forKey: Key.subgroup)
-        aCoder.encode(subjectType, forKey: Key.subjectType)
+        aCoder.encode(title, forKey: Key.title.rawValue)
+        aCoder.encode(auditory, forKey: Key.auditory.rawValue)
+        aCoder.encode(time, forKey: Key.time.rawValue)
+        aCoder.encode(teachers, forKey: Key.teachers.rawValue)
+        aCoder.encode(weekNumber, forKey: Key.weekNumber.rawValue)
+        aCoder.encode(subgroup, forKey: Key.subgroup.rawValue)
+        aCoder.encode(subjectType, forKey: Key.subjectType.rawValue)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
-        let title = aDecoder.decodeObject(forKey: Key.title) as! String
-        let auditory = aDecoder.decodeObject(forKey: Key.auditory) as! String
-        let time = aDecoder.decodeObject(forKey: Key.time) as! String
-        let teachers = aDecoder.decodeObject(forKey: Key.teachers) as! [Teacher]
-        let weekNumber = aDecoder.decodeObject(forKey: Key.weekNumber) as! [Int]
-        let subgroup = aDecoder.decodeInteger(forKey: Key.subgroup)
-        let subjectType = aDecoder.decodeObject(forKey: Key.subjectType) as! String
+        let title = aDecoder.decodeObject(forKey: Key.title.rawValue) as! String
+        let auditory = aDecoder.decodeObject(forKey: Key.auditory.rawValue) as! String
+        let time = aDecoder.decodeObject(forKey: Key.time.rawValue) as! String
+        let teachers = aDecoder.decodeObject(forKey: Key.teachers.rawValue) as! [Teacher]
+        let weekNumber = aDecoder.decodeObject(forKey: Key.weekNumber.rawValue) as! [Int]
+        let subgroup = aDecoder.decodeInteger(forKey: Key.subgroup.rawValue)
+        let subjectType = aDecoder.decodeObject(forKey: Key.subjectType.rawValue) as! String
         self.init(title: title, auditory: auditory, time: time, teachers: teachers, weekNumber: weekNumber, subgroup: subgroup, subjectType: subjectType)
     }
     

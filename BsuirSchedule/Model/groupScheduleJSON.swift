@@ -34,7 +34,7 @@ struct Schedule: Decodable{
     var schedule: [ScheduleModel]?
 }
 
-struct ScheduleModel: Decodable{
+struct ScheduleModel: Decodable {
     var weekNumber: [Int]?
     var studentGroup: [String]?
     var numSubgroup: Int?
@@ -49,7 +49,7 @@ struct ScheduleModel: Decodable{
     var zaoch: Bool?
 }
 
-struct Employee: Decodable{
+struct Employee: Decodable {
     var firstName: String?
     var lastName: String?
     var middleName: String?
@@ -61,6 +61,9 @@ struct Employee: Decodable{
     var fio: String?
 }
 
+struct LastUpdate: Decodable {
+    var lastUpdateDate: Date
+}
 
 
 
