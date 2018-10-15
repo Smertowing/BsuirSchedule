@@ -14,9 +14,9 @@ struct Answer: Decodable {
     var schedules: [Schedule]?
     var examSchedules: [Schedule]?
     var todayDate: String?
-    var todaySchedules: [Schedule]?
+    var todaySchedules: [ScheduleModel]?
     var tomorrowDate: String?
-    var tomorrowSchedules: [Schedule]?
+    var tomorrowSchedules: [ScheduleModel]?
     var currentWeekNumber: Int?
 }
 
@@ -31,10 +31,10 @@ struct StudentGroup: Decodable {
 
 struct Schedule: Decodable{
     var weekDay: String?
-    var schedule: [ScheduleClass]?
+    var schedule: [ScheduleModel]?
 }
 
-struct ScheduleClass: Decodable{
+struct ScheduleModel: Decodable{
     var weekNumber: [Int]?
     var studentGroup: [String]?
     var numSubgroup: Int?
