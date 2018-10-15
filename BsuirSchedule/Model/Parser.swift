@@ -9,8 +9,8 @@
 import UIKit
 
 class Parser {
-    
-    func getGroups() -> [String]? {
+
+    static func getGroups() -> [String]? {
         var groupNames: [String] = []
         let scheduleURL: URL = URL(string: "https://students.bsuir.by/api/v1/groups")!
         
@@ -23,19 +23,17 @@ class Parser {
                     }
                 }
                 return groupNames
-            } catch (let err) {
-                print("\(errno): \(err)")
+            } catch {
                 return nil
             }
         } else {
             return nil
         }
-        
     }
     
-    func getPhoto(path: String) -> UIImage? {
+    static func getPhoto(path: String) -> UIImage? {
         let photoURL: URL = URL(string: path)!
-        if let data = try? Data(contentsOf: photoURL){
+        if let data = try? Data(contentsOf: photoURL) {
             let photo = UIImage(data: data)
             return photo
         } else {
@@ -43,7 +41,7 @@ class Parser {
         }
     }
     
-    func getSchedule(forGroup numGroup: String, subgroup: StudSchedule.Subgroup) -> StudSchedule? {
+    static func getSchedule(forGroup numGroup: String, subgroup: Subgroup) -> StudSchedule? {
         guard let scheduleURL: URL = URL(string: "https://students.bsuir.by/api/v1/studentGroup/schedule?studentGroup=\(numGroup)") else {
             return nil
         }

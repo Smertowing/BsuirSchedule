@@ -21,6 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
         
+        if let studSchedules = Parser.getSchedule(forGroup: ScheduleMain.selectedGroup, subgroup: ScheduleMain.selectedSubgroup) {
+            ScheduleMain.studSchedules.append(studSchedules)
+        }
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

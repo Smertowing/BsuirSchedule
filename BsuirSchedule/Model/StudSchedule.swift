@@ -8,14 +8,14 @@
 
 import Foundation
 
+public enum Subgroup: Int {
+    case first = 1
+    case second = 2
+}
+
 class StudSchedule: NSObject, NSCoding {
     
     var title: String
-    
-    enum Subgroup: Int {
-        case first
-        case second
-    }
     
     var subgroup: Subgroup
     var schedule: [Weekday] = []
@@ -40,7 +40,7 @@ class StudSchedule: NSObject, NSCoding {
     
     required convenience init?(coder aDecoder: NSCoder) {
         let title = aDecoder.decodeObject(forKey: Key.title) as! String
-        let subgroup = StudSchedule.Subgroup(rawValue: aDecoder.decodeInteger(forKey: Key.subgroup))!
+        let subgroup = Subgroup(rawValue: aDecoder.decodeInteger(forKey: Key.subgroup))!
         let schedule = aDecoder.decodeObject(forKey: Key.schedule) as! [Weekday]
         self.init(title: title, schedule: schedule, subgroup: subgroup)
     }
