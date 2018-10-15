@@ -5,21 +5,19 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Schedule Table View Controller-->
         <scene sceneID="tDb-2V-6H7">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hsz-hL-0Fj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="oZf-8B-G9H" customClass="ScheduleTableViewController" customModule="BsuirSchedule" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5CV-6u-7W2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentsSchaduleTableViewCell" rowHeight="66" id="Cc1-Ty-WB5" customClass="StudentsSchaduleTableViewCell" customModule="BSUIR_Shedule" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentsSchaduleTableViewCell" rowHeight="66" id="Cc1-Ty-WB5" customClass="ScheduleTableViewCell" customModule="BsuirSchedule" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cc1-Ty-WB5" id="SX4-cU-m3T">
@@ -69,7 +67,7 @@
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EfY-jl-WcU">
                                             <rect key="frame" x="0.0" y="6.5" width="12" height="55"/>
-                                            <color key="backgroundColor" name="yellow"/>
+                                            <color key="backgroundColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="12" id="WkD-Fh-6QO"/>
                                             </constraints>
@@ -116,14 +114,12 @@
                         </connections>
                     </tableView>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hsz-hL-0Fj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="28" y="-27.436281859070466"/>
         </scene>
     </scenes>
     <resources>
         <image name="user" width="42.421173095703125" height="42.421173095703125"/>
-        <namedColor name="yellow">
-            <color name="systemYellowColor" catalog="System" colorSpace="catalog"/>
-        </namedColor>
     </resources>
 </document>
