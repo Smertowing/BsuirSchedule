@@ -34,9 +34,9 @@ class ScheduleTableViewCell: UITableViewCell {
         }
         self.weekNumber.text = weeks
         switch subject?.subjectType {
-        case "ЛК": lessonType.backgroundColor = #colorLiteral(red: 1, green: 0.8784313725, blue: 0.07843137255, alpha: 1)
+        case "ЛК": lessonType.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         case "ПЗ": lessonType.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
-        case "ЛР": lessonType.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        case "ЛР": lessonType.backgroundColor = #colorLiteral(red: 1, green: 0.8784313725, blue: 0.07843137255, alpha: 1)
         default: lessonType.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         }
         if !(subject?.subgroup == 0) {

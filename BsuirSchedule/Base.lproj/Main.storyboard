@@ -37,7 +37,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:20 16:55" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLX-Bd-6Go">
-                                            <rect key="frame" x="20" y="0.0" width="50" height="67"/>
+                                            <rect key="frame" x="20" y="0.0" width="50" height="66.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="66" id="3eT-vd-AN0"/>
                                                 <constraint firstAttribute="width" constant="50" id="ii5-05-0UV"/>
@@ -66,7 +66,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EfY-jl-WcU">
-                                            <rect key="frame" x="0.0" y="6.5" width="12" height="55"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="12" height="67.5"/>
                                             <color key="backgroundColor" name="systemYellowColor" catalog="System" colorSpace="catalog"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="12" id="WkD-Fh-6QO"/>
@@ -86,14 +86,14 @@
                                         <constraint firstAttribute="bottom" secondItem="oLX-Bd-6Go" secondAttribute="bottom" constant="-0.33000000000000002" id="VWI-4q-22y"/>
                                         <constraint firstItem="k2b-S8-shD" firstAttribute="leading" secondItem="oLX-Bd-6Go" secondAttribute="trailing" constant="8" id="aea-Ye-RAl"/>
                                         <constraint firstItem="k2b-S8-shD" firstAttribute="top" secondItem="SX4-cU-m3T" secondAttribute="top" constant="9" id="cFT-6b-SM3"/>
-                                        <constraint firstItem="EfY-jl-WcU" firstAttribute="top" secondItem="SX4-cU-m3T" secondAttribute="top" constant="6" id="dTu-WV-1xg"/>
                                         <constraint firstItem="hCV-8U-hKX" firstAttribute="leading" secondItem="oLX-Bd-6Go" secondAttribute="trailing" constant="8" id="hCi-2i-LlB"/>
                                         <constraint firstItem="khj-2B-YCv" firstAttribute="leading" secondItem="719-wc-7bM" secondAttribute="trailing" constant="8" id="hlM-gd-mRq"/>
                                         <constraint firstAttribute="bottom" secondItem="hCV-8U-hKX" secondAttribute="bottom" constant="9" id="ixv-f5-Y1Y"/>
                                         <constraint firstItem="TFK-TN-R7T" firstAttribute="leading" secondItem="khj-2B-YCv" secondAttribute="trailing" constant="8" id="k8b-8F-4rx"/>
                                         <constraint firstAttribute="trailing" secondItem="TFK-TN-R7T" secondAttribute="trailing" constant="6" id="oFy-Wq-MqA"/>
+                                        <constraint firstAttribute="bottom" secondItem="EfY-jl-WcU" secondAttribute="bottom" id="tJ2-Ei-G4q"/>
                                         <constraint firstItem="oLX-Bd-6Go" firstAttribute="top" secondItem="SX4-cU-m3T" secondAttribute="top" id="v8S-Hz-dgk"/>
-                                        <constraint firstAttribute="bottom" secondItem="EfY-jl-WcU" secondAttribute="bottom" constant="5.6699999999999999" id="yKo-Uf-Qse"/>
+                                        <constraint firstItem="EfY-jl-WcU" firstAttribute="top" secondItem="SX4-cU-m3T" secondAttribute="top" id="zQv-pN-cWl"/>
                                         <constraint firstItem="719-wc-7bM" firstAttribute="top" secondItem="k2b-S8-shD" secondAttribute="bottom" constant="7" id="zz1-Nf-rar"/>
                                     </constraints>
                                 </tableViewCellContentView>
