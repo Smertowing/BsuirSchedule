@@ -14,6 +14,7 @@ class ScheduleMain {
     static var selectedGroup: String? = "751006"
     static var selectedSubgroup: Int? = 2
     static var dURL: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    static var selectedWeeks: [Bool] = [true, true, true, true]
     
     enum Keys: String {
         case schedules = "schedules.brakh"

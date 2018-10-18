@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F35E4FB42179090800AD6B95 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E4FB32179090800AD6B95 /* SettingsTableViewController.swift */; };
 		F386C6BE2173BCD7001B8500 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386C6BD2173BCD7001B8500 /* ScheduleTableViewController.swift */; };
 		F386C6C32173BEA0001B8500 /* StudSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386C6C22173BEA0001B8500 /* StudSchedule.swift */; };
 		F386C6C52173BEDD001B8500 /* Weekdays.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386C6C42173BEDD001B8500 /* Weekdays.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F35E4FB32179090800AD6B95 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		F386C6BD2173BCD7001B8500 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
 		F386C6C22173BEA0001B8500 /* StudSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudSchedule.swift; sourceTree = "<group>"; };
 		F386C6C42173BEDD001B8500 /* Weekdays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekdays.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				F3FA1A5E21748C5400A3E06C /* ScheduleTableViewCell.swift */,
 				F386C6BD2173BCD7001B8500 /* ScheduleTableViewController.swift */,
+				F35E4FB32179090800AD6B95 /* SettingsTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				F386C6C72173BEF8001B8500 /* Subject.swift in Sources */,
 				F386C6C32173BEA0001B8500 /* StudSchedule.swift in Sources */,
 				F386C6BE2173BCD7001B8500 /* ScheduleTableViewController.swift in Sources */,
+				F35E4FB42179090800AD6B95 /* SettingsTableViewController.swift in Sources */,
 				F3C1653A21734C610019BC9B /* GroupScheduleJSON.swift in Sources */,
 				F3FA1A5D2174695100A3E06C /* Parser.swift in Sources */,
 				F386C6C92173BF25001B8500 /* Teacher.swift in Sources */,
