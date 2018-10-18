@@ -23,7 +23,7 @@ class ScheduleTableViewController: UITableViewController {
             }
         }
         let schedule = ScheduleMain.studSchedules.filter{$0.title == ScheduleMain.selectedGroup}
-        self.schedule = schedule[0]
+        if schedule.count > 0 { self.schedule = schedule[0] }
         self.tableView.reloadData()
         ScheduleMain.saveData()
     }

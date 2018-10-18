@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oZf-8B-G9H">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YEu-EJ-kaf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Schedule Table View Controller-->
+        <!--751006-->
         <scene sceneID="tDb-2V-6H7">
             <objects>
                 <tableViewController id="oZf-8B-G9H" customClass="ScheduleTableViewController" customModule="BsuirSchedule" customModuleProvider="target" sceneMemberID="viewController">
@@ -46,7 +46,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="TFK-TN-R7T">
+                                        <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="TFK-TN-R7T">
                                             <rect key="frame" x="315" y="6.5" width="54" height="54"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="54" id="Tce-aF-7df"/>
@@ -113,10 +113,29 @@
                             <outlet property="delegate" destination="oZf-8B-G9H" id="6mN-IS-X6N"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="751006" id="8xs-Vw-7I0">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="CBn-vF-JDP"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsz-hL-0Fj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28" y="-27.436281859070466"/>
+            <point key="canvasLocation" x="-183" y="464"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NhQ-oI-HGZ">
+            <objects>
+                <navigationController id="YEu-EJ-kaf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NPr-PP-EDY">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="oZf-8B-G9H" kind="relationship" relationship="rootViewController" id="hZF-lC-NqA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sKy-4b-Rnb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-996" y="464"/>
         </scene>
     </scenes>
     <resources>
