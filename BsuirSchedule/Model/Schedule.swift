@@ -10,6 +10,7 @@ import Foundation
 
 class ScheduleMain {
     
+    static var lastUpdate: Date = Date(timeIntervalSinceReferenceDate: 0)
     static var studSchedules: [StudSchedule] = []
     static var selectedGroup: String? = "751006"
     static var selectedSubgroup: Int? = 2
@@ -40,7 +41,7 @@ class ScheduleMain {
         selectedSubgroup = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(codedSubgroup) as? Int
         
         guard let codedData = try? Data(contentsOf: dataURL.appendingPathComponent(selectedGroup!).appendingPathComponent(Keys.schedules.rawValue)) else { return false }
-        studSchedules = try! (NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(codedData) as? [StudSchedule])!
+        studSchedules = try! (NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(codedData) as? [StudSchedule])! 
         return true
     }
     

@@ -14,15 +14,23 @@ class ScheduleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if ScheduleMain.loadData() {
-            print("Hello, world!")
-        } else {
-            if let studSchedules = Parser.getSchedule(forGroup: ScheduleMain.selectedGroup!, subgroup: ScheduleMain.selectedSubgroup!) {
-                ScheduleMain.studSchedules.append(studSchedules)
+            if let tempLastUpate = Parser.getLastUpdate(forGroup: ScheduleMain.selectedGroup!) {
+            if  tempLastUpate > ScheduleMain.lastUpdate {
+                if let studSchedules = Parser.getSchedule(forGroup: ScheduleMain.selectedGroup!, subgroup: ScheduleMain.selectedSubgroup!) {
+                    ScheduleMain.studSchedules.append(studSchedules)
+                    ScheduleMain.saveData()
+                    ScheduleMain.lastUpdate = tempLastUpate
+                }
             }
+        } else {
+            let succesfull = ScheduleMain.loadData()
+            if !succesfull {
+                print("Bad news, everyone")
+            }
+    
         }
-        let schedule = ScheduleMain.studSchedules.filter{$0.title == ScheduleMain.selectedGroup}
+        
+        var schedule = ScheduleMain.studSchedules.filter{$0.title == ScheduleMain.selectedGroup}
         if schedule.count > 0 { self.schedule = schedule[0] }
         self.tableView.reloadData()
         ScheduleMain.saveData()

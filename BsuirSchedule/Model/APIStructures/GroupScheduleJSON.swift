@@ -8,15 +8,17 @@
 
 import Foundation
 
-struct Answer: Decodable {
+let groupScheduleHTTP = "https://journal.bsuir.by/api/v1/studentGroup/schedule"
+
+struct GroupScheduleAnswer: Decodable {
     var employee: Employee?
     var studentGroup: StudentGroup?
-    var schedules: [Schedule]?
-    var examSchedules: [Schedule]?
+    var schedules: [GroupSchedule]?
+    var examSchedules: [GroupSchedule]?
     var todayDate: String?
-    var todaySchedules: [ScheduleModel]?
+    var todaySchedules: [GroupScheduleModel]?
     var tomorrowDate: String?
-    var tomorrowSchedules: [ScheduleModel]?
+    var tomorrowSchedules: [GroupScheduleModel]?
     var currentWeekNumber: Int?
 }
 
@@ -29,12 +31,12 @@ struct StudentGroup: Decodable {
     var calendarId: String?
 }
 
-struct Schedule: Decodable{
+struct GroupSchedule: Decodable{
     var weekDay: String?
-    var schedule: [ScheduleModel]?
+    var schedule: [GroupScheduleModel]?
 }
 
-struct ScheduleModel: Decodable {
+struct GroupScheduleModel: Decodable {
     var weekNumber: [Int]?
     var studentGroup: [String]?
     var numSubgroup: Int?
@@ -48,23 +50,3 @@ struct ScheduleModel: Decodable {
     var employee: [Employee]?
     var zaoch: Bool?
 }
-
-struct Employee: Decodable {
-    var firstName: String?
-    var lastName: String?
-    var middleName: String?
-    var rank: String?
-    var photoLink: String?
-    var calendarId: String?
-    var academicDepartment: [String]?
-    var id: Int?
-    var fio: String?
-}
-
-struct LastUpdate: Decodable {
-    var lastUpdateDate: Date
-}
-
-
-
-

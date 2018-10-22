@@ -12,7 +12,7 @@ class Parser {
 
     static func getGroups() -> [String]? {
         var groupNames: [String] = []
-        let scheduleURL: URL = URL(string: "https://students.bsuir.by/api/v1/groups")!
+        let scheduleURL: URL = URL(string: "https://journal.bsuir.by/api/v1/groups")!
         
         if let data = try? Data(contentsOf: scheduleURL){
             do {
@@ -23,6 +23,23 @@ class Parser {
                     }
                 }
                 return groupNames
+            } catch {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
+    
+    static func getLastUpdate(forGroup numGroup: String) -> Date? {
+        let updateURL: URL = URL(string: "https://journal.bsuir.by/api/v1/studentGroup/lastUpdateDate?studentGroup=\(numGroup)")!
+        
+        if let data = try? Data(contentsOf: updateURL){
+            do {
+                let updateStr = try JSONDecoder().decode(LastUpdate.self, from: data)
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd.MM.yyyy"
+                return dateFormatter.date(from: updateStr.lastUpdateDate!)
             } catch {
                 return nil
             }
@@ -42,13 +59,13 @@ class Parser {
     }
     
     static func getSchedule(forGroup numGroup: String, subgroup: Int) -> StudSchedule? {
-        guard let scheduleURL: URL = URL(string: "https://students.bsuir.by/api/v1/studentGroup/schedule?studentGroup=\(numGroup)") else {
+        guard let scheduleURL: URL = URL(string: "https://journal.bsuir.by/api/v1/studentGroup/schedule?studentGroup=\(numGroup)") else {
             return nil
         }
         if let data = try? Data(contentsOf: scheduleURL) {
             do {
                 var tempShedules: [Weekday] = []
-                let answer = try JSONDecoder().decode(Answer.self, from: data)
+                let answer = try JSONDecoder().decode(GroupScheduleAnswer.self, from: data)
                 guard let schedules = answer.schedules else { return nil }
                 for schedule in schedules {
                     var tempSubjects: [Subject] = []

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F33DAC1D217E5105006C65C5 /* EmployeeScheduleJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DAC1C217E5105006C65C5 /* EmployeeScheduleJSON.swift */; };
+		F33DAC25217E5196006C65C5 /* ListsJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DAC24217E5196006C65C5 /* ListsJSON.swift */; };
+		F33DAC27217E51C9006C65C5 /* DateAndWeekJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DAC26217E51C9006C65C5 /* DateAndWeekJSON.swift */; };
 		F35E4FB42179090800AD6B95 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E4FB32179090800AD6B95 /* SettingsTableViewController.swift */; };
 		F386C6BE2173BCD7001B8500 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386C6BD2173BCD7001B8500 /* ScheduleTableViewController.swift */; };
 		F386C6C32173BEA0001B8500 /* StudSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386C6C22173BEA0001B8500 /* StudSchedule.swift */; };
@@ -24,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F33DAC1C217E5105006C65C5 /* EmployeeScheduleJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeScheduleJSON.swift; sourceTree = "<group>"; };
+		F33DAC24217E5196006C65C5 /* ListsJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsJSON.swift; sourceTree = "<group>"; };
+		F33DAC26217E51C9006C65C5 /* DateAndWeekJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndWeekJSON.swift; sourceTree = "<group>"; };
 		F35E4FB32179090800AD6B95 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		F386C6BD2173BCD7001B8500 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
 		F386C6C22173BEA0001B8500 /* StudSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudSchedule.swift; sourceTree = "<group>"; };
@@ -53,6 +59,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F33DAC1B217E50D8006C65C5 /* APIStructures */ = {
+			isa = PBXGroup;
+			children = (
+				F3C1653921734C610019BC9B /* GroupScheduleJSON.swift */,
+				F33DAC1C217E5105006C65C5 /* EmployeeScheduleJSON.swift */,
+				F33DAC24217E5196006C65C5 /* ListsJSON.swift */,
+				F33DAC26217E51C9006C65C5 /* DateAndWeekJSON.swift */,
+			);
+			path = APIStructures;
+			sourceTree = "<group>";
+		};
 		F386C6BF2173BCDC001B8500 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,7 +113,7 @@
 		F3C1653B21734C640019BC9B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F3C1653921734C610019BC9B /* GroupScheduleJSON.swift */,
+				F33DAC1B217E50D8006C65C5 /* APIStructures */,
 				F386C6C82173BF25001B8500 /* Teacher.swift */,
 				F386C6C62173BEF8001B8500 /* Subject.swift */,
 				F386C6C42173BEDD001B8500 /* Weekdays.swift */,
@@ -178,9 +195,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F33DAC1D217E5105006C65C5 /* EmployeeScheduleJSON.swift in Sources */,
+				F33DAC25217E5196006C65C5 /* ListsJSON.swift in Sources */,
 				F386C6C72173BEF8001B8500 /* Subject.swift in Sources */,
 				F386C6C32173BEA0001B8500 /* StudSchedule.swift in Sources */,
 				F386C6BE2173BCD7001B8500 /* ScheduleTableViewController.swift in Sources */,
+				F33DAC27217E51C9006C65C5 /* DateAndWeekJSON.swift in Sources */,
 				F35E4FB42179090800AD6B95 /* SettingsTableViewController.swift in Sources */,
 				F3C1653A21734C610019BC9B /* GroupScheduleJSON.swift in Sources */,
 				F3FA1A5D2174695100A3E06C /* Parser.swift in Sources */,

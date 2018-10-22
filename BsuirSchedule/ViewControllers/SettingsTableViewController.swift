@@ -29,6 +29,9 @@ class SettingsTableViewController: UITableViewController {
                 else{
                     cell.accessoryType = .checkmark
                 }
+                
+                ScheduleMain.selectedWeeks[indexPath.row].toggle()
+
             }
         }
         
