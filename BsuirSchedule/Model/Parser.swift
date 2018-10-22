@@ -12,7 +12,7 @@ class Parser {
 
     static func getGroups() -> [String]? {
         var groupNames: [String] = []
-        let scheduleURL: URL = URL(string: "https://journal.bsuir.by/api/v1/groups")!
+        let scheduleURL: URL = URL(string: allGroupsHTTP)!
         
         if let data = try? Data(contentsOf: scheduleURL){
             do {
@@ -32,7 +32,7 @@ class Parser {
     }
     
     static func getLastUpdate(forGroup numGroup: String) -> Date? {
-        let updateURL: URL = URL(string: "https://journal.bsuir.by/api/v1/studentGroup/lastUpdateDate?studentGroup=\(numGroup)")!
+        let updateURL: URL = URL(string: lastUpdateHTTP+"?studentGroup=\(numGroup)")!
         
         if let data = try? Data(contentsOf: updateURL){
             do {
@@ -59,7 +59,7 @@ class Parser {
     }
     
     static func getSchedule(forGroup numGroup: String, subgroup: Int) -> StudSchedule? {
-        guard let scheduleURL: URL = URL(string: "https://journal.bsuir.by/api/v1/studentGroup/schedule?studentGroup=\(numGroup)") else {
+        guard let scheduleURL: URL = URL(string: groupScheduleHTTP+"?studentGroup=\(numGroup)") else {
             return nil
         }
         if let data = try? Data(contentsOf: scheduleURL) {
