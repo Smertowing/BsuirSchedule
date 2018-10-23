@@ -13,7 +13,7 @@
 		F35E4FB42179090800AD6B95 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35E4FB32179090800AD6B95 /* SettingsTableViewController.swift */; };
 		F386C6BE2173BCD7001B8500 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386C6BD2173BCD7001B8500 /* ScheduleTableViewController.swift */; };
 		F386C6C32173BEA0001B8500 /* StudSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386C6C22173BEA0001B8500 /* StudSchedule.swift */; };
-		F386C6C52173BEDD001B8500 /* Weekdays.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386C6C42173BEDD001B8500 /* Weekdays.swift */; };
+		F386C6C52173BEDD001B8500 /* Weekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386C6C42173BEDD001B8500 /* Weekday.swift */; };
 		F386C6C72173BEF8001B8500 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386C6C62173BEF8001B8500 /* Subject.swift */; };
 		F386C6C92173BF25001B8500 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F386C6C82173BF25001B8500 /* Teacher.swift */; };
 		F3C1652821734C0D0019BC9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C1652721734C0D0019BC9B /* AppDelegate.swift */; };
@@ -33,7 +33,7 @@
 		F35E4FB32179090800AD6B95 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		F386C6BD2173BCD7001B8500 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
 		F386C6C22173BEA0001B8500 /* StudSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudSchedule.swift; sourceTree = "<group>"; };
-		F386C6C42173BEDD001B8500 /* Weekdays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekdays.swift; sourceTree = "<group>"; };
+		F386C6C42173BEDD001B8500 /* Weekday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weekday.swift; sourceTree = "<group>"; };
 		F386C6C62173BEF8001B8500 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
 		F386C6C82173BF25001B8500 /* Teacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teacher.swift; sourceTree = "<group>"; };
 		F3C1652421734C0D0019BC9B /* BsuirSchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BsuirSchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,7 +116,7 @@
 				F33DAC1B217E50D8006C65C5 /* APIStructures */,
 				F386C6C82173BF25001B8500 /* Teacher.swift */,
 				F386C6C62173BEF8001B8500 /* Subject.swift */,
-				F386C6C42173BEDD001B8500 /* Weekdays.swift */,
+				F386C6C42173BEDD001B8500 /* Weekday.swift */,
 				F386C6C22173BEA0001B8500 /* StudSchedule.swift */,
 				F3FA1A5C2174695100A3E06C /* Parser.swift */,
 				F3FA1A6021749C3F00A3E06C /* Schedule.swift */,
@@ -206,7 +206,7 @@
 				F3FA1A5D2174695100A3E06C /* Parser.swift in Sources */,
 				F386C6C92173BF25001B8500 /* Teacher.swift in Sources */,
 				F3C1652821734C0D0019BC9B /* AppDelegate.swift in Sources */,
-				F386C6C52173BEDD001B8500 /* Weekdays.swift in Sources */,
+				F386C6C52173BEDD001B8500 /* Weekday.swift in Sources */,
 				F3FA1A6121749C3F00A3E06C /* Schedule.swift in Sources */,
 				F3FA1A5F21748C5400A3E06C /* ScheduleTableViewCell.swift in Sources */,
 			);

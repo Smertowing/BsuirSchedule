@@ -1,5 +1,5 @@
 //
-//  Weekdays.swift
+//  Weekday.swift
 //  BsuirSchedule
 //
 //  Created by Kiryl Holubeu on 10/14/18.

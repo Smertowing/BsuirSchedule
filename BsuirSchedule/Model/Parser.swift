@@ -76,7 +76,8 @@ class Parser {
                         time += " "
                         time += subject.endLessonTime ?? ""
                         let weekNumber = subject.weekNumber!.filter { return $0 != 0 }
-                        let subgroup = subject.numSubgroup ?? 0
+                        let tempsubgroup = subject.numSubgroup ?? 0
+                        guard (tempsubgroup == subgroup) || (tempsubgroup == 0) || (subgroup == 0) else { continue }
                         var teachers: [Teacher] = []
                         for teacher in subject.employee! {
                             var fullName = teacher.lastName ?? ""
@@ -91,7 +92,7 @@ class Parser {
                             teachers.append(Teacher(id: teacher.id!, fullName: fullName, photo: photo))
                         }
                         let subjectType = subject.lessonType ?? "Неизвестно"
-                        tempSubjects.append(Subject(title: title, auditory: auditory, time: time, teachers: teachers, weekNumber: weekNumber, subgroup: subgroup, subjectType: subjectType))
+                        tempSubjects.append(Subject(title: title, auditory: auditory, time: time, teachers: teachers, weekNumber: weekNumber, subgroup: tempsubgroup, subjectType: subjectType))
                     }
                     tempShedules.append(Weekday(title: schedule.weekDay!, subjects: tempSubjects))
                 }

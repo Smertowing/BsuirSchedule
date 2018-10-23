@@ -8,12 +8,6 @@
 
 import Foundation
 
-public enum Subgroup: Int {
-    case first = 1
-    case second = 2
-    case both = 0
-}
-
 class StudSchedule: NSObject, NSCoding, NSSecureCoding {
     
     static var supportsSecureCoding: Bool {
