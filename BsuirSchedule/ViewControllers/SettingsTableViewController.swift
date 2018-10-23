@@ -12,11 +12,21 @@ class SettingsTableViewController: UITableViewController {
 
     @IBOutlet weak var subgroupControl: UISegmentedControl!
     @IBOutlet weak var subgroupCell: UITableViewCell!
+    @IBOutlet weak var groupPicker: UIPickerView!
+    
+    var groups: [String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    //    subgroupCell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
-    //    subgroupCell.layer.borderColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 0)
+        groupPicker.isHidden = true
+    }
+    
+    @IBAction func didTapGroup(_ sender: UITapGestureRecognizer) {
+        groupPicker.isHidden = false
+        groups = Parser.getGroups()
+        groups?.sort()
+        groupPicker.delegate = self
+        groupPicker.dataSource = self
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -31,10 +41,28 @@ class SettingsTableViewController: UITableViewController {
                 }
                 
                 ScheduleMain.selectedWeeks[indexPath.row].toggle()
-
             }
         }
-        
     }
+    
+}
 
+extension SettingsTableViewController: UIPickerViewDelegate {
+    
+}
+
+extension SettingsTableViewController: UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return groups?.count ?? 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return groups?[row]
+    }
+    
 }
