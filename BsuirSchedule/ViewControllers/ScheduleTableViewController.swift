@@ -36,8 +36,12 @@ class ScheduleTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         loadSettings()
     }
+    
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return schedule?.schedule.count ?? 0
