@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YEu-EJ-kaf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YEu-EJ-kaf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -141,7 +141,7 @@
             </objects>
             <point key="canvasLocation" x="-996" y="464"/>
         </scene>
-        <!--Settings Table View Controller-->
+        <!--Settings-->
         <scene sceneID="U6O-gb-d46">
             <objects>
                 <tableViewController id="zdH-A9-nw4" customClass="SettingsTableViewController" customModule="BsuirSchedule" customModuleProvider="target" sceneMemberID="viewController">
@@ -149,10 +149,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <pickerView key="tableFooterView" tag="1" contentMode="scaleAspectFill" id="2F6-7p-hyp">
-                            <rect key="frame" x="0.0" y="453.5" width="375" height="147"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                        </pickerView>
                         <sections>
                             <tableViewSection headerTitle="Group" id="jiH-dG-GJ9">
                                 <cells>
@@ -163,19 +159,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="751006" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfV-KY-g5g">
-                                                    <rect key="frame" x="16" y="13" width="343" height="21"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="751006" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vyz-7p-nv0">
+                                                    <rect key="frame" x="16" y="9" width="343" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <gestureRecognizers/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <action selector="groupDidEdited:" destination="zdH-A9-nw4" eventType="editingDidEnd" id="spi-ss-SWC"/>
+                                                    </connections>
+                                                </textField>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="ryZ-e5-h6K" appends="YES" id="tbl-Uf-DWC"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -195,6 +190,9 @@
                                                         <segment title="First"/>
                                                         <segment title="Second"/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="subgroupValueChanged:" destination="zdH-A9-nw4" eventType="valueChanged" id="TXE-er-4dg"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
@@ -297,6 +295,28 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" editingAccessoryType="checkmark" id="Q6p-QJ-EYY">
+                                        <rect key="frame" x="0.0" y="435.5" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q6p-QJ-EYY" id="fce-Xu-blX">
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only current" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAP-ib-Gid">
+                                                    <rect key="frame" x="16" y="11" width="311" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="PAP-ib-Gid" secondAttribute="bottom" constant="1" id="8Sd-1H-kOA"/>
+                                                <constraint firstItem="PAP-ib-Gid" firstAttribute="trailing" secondItem="fce-Xu-blX" secondAttribute="trailingMargin" id="ROc-fm-p9y"/>
+                                                <constraint firstItem="PAP-ib-Gid" firstAttribute="top" secondItem="fce-Xu-blX" secondAttribute="topMargin" id="U9L-vh-x4V"/>
+                                                <constraint firstItem="PAP-ib-Gid" firstAttribute="leading" secondItem="fce-Xu-blX" secondAttribute="leadingMargin" id="YRe-2b-uQY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -305,18 +325,20 @@
                             <outlet property="delegate" destination="zdH-A9-nw4" id="8jp-hm-3Ow"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="gUQ-k0-Rf0">
+                        <barButtonItem key="rightBarButtonItem" title="Update" id="f4P-4h-RhZ">
+                            <connections>
+                                <action selector="updateTapped:" destination="zdH-A9-nw4" id="9sf-Dl-7IT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="groupPicker" destination="2F6-7p-hyp" id="eGY-El-zeR"/>
+                        <outlet property="groupCell" destination="vyz-7p-nv0" id="hfh-KR-DJA"/>
                         <outlet property="subgroupCell" destination="u3Y-vL-Xqs" id="4Ld-kK-PcX"/>
                         <outlet property="subgroupControl" destination="n9f-xm-EnN" id="R8g-BM-neL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nb4-xe-tr1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="ryZ-e5-h6K">
-                    <connections>
-                        <action selector="didTapGroup:" destination="zdH-A9-nw4" id="aYL-sg-bWf"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="660" y="463.71814092953525"/>
         </scene>

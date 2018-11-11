@@ -9,9 +9,10 @@
 import Foundation
 
 let lastUpdateHTTP = "https://journal.bsuir.by/api/v1/studentGroup/lastUpdateDate"
-let currentWeekHTTP = "http://journal.bsuir.by/api/v1/week"
+let currentWeekHTTP = "https://journal.bsuir.by/api/v1/week"
 
 struct LastUpdate: Decodable {
     var lastUpdateDate: String?
 }
+
 

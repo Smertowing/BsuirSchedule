@@ -58,6 +58,16 @@ class Parser {
         }
     }
     
+    static func getCurrentWeek() -> Int? {
+        let weekURL: URL = URL(string: currentWeekHTTP)!
+        if var data = try? Data(contentsOf: weekURL){
+            let weekNumber = Int(data.remove(at: 0))
+            return weekNumber
+        } else {
+            return nil
+        }
+    }
+    
     static func getSchedule(forGroup numGroup: String, subgroup: Int) -> StudSchedule? {
         guard let scheduleURL: URL = URL(string: groupScheduleHTTP+"?studentGroup=\(numGroup)") else {
             return nil
