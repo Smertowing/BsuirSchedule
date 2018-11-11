@@ -61,7 +61,7 @@ class Parser {
     static func getCurrentWeek() -> Int? {
         let weekURL: URL = URL(string: currentWeekHTTP)!
         if var data = try? Data(contentsOf: weekURL){
-            let weekNumber = Int(data.remove(at: 0))
+            let weekNumber = Int(data.remove(at: 0) % 48) - 1
             return weekNumber
         } else {
             return nil
