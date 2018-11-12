@@ -10,7 +10,7 @@ import UIKit
 
 protocol SettingsTableViewControllerDelegate: class {
     func SettingsTableViewControllerDidCancel(_ controller: SettingsTableViewController)
-    func SettingsTableViewControllerDidFinishAdding(_ controller: SettingsTableViewController)
+    func SettingsTableViewControllerDidUpdated(_ controller: SettingsTableViewController)
 }
 
 class SettingsTableViewController: UITableViewController {
@@ -27,6 +27,7 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        OnlineData.downloadData()
         groups = OnlineData.availableGroups
         groups?.sort()
         week = OnlineData.currentWeek
@@ -34,6 +35,10 @@ class SettingsTableViewController: UITableViewController {
     
     @IBAction func cancel(_ sender: Any) {
         delegate?.SettingsTableViewControllerDidCancel(self)
+    }
+    
+    @IBAction func updateTapped(_ sender: Any) {
+        delegate?.SettingsTableViewControllerDidUpdated(self)
     }
     
     @IBAction func groupDidEdited(_ sender: UITextField) {
@@ -48,13 +53,6 @@ class SettingsTableViewController: UITableViewController {
     
     @IBAction func subgroupValueChanged(_ sender: UISegmentedControl) {
         ScheduleMain.selectedSubgroup = sender.selectedSegmentIndex
-    }
-    
-    @IBAction func updateTapped(_ sender: Any) {
-        OnlineData.downloadData()
-        groups = OnlineData.availableGroups
-        groups?.sort()
-        week = OnlineData.currentWeek
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -100,7 +98,6 @@ extension SettingsTableViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         guard let oldText = groupCell.text,
             let stringRange = Range(range, in: oldText) else {
                 return false

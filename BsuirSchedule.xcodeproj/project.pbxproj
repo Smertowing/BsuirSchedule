@@ -83,6 +83,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F30D9A03219A08AB00BF845F /* ScheduleClasses */ = {
+			isa = PBXGroup;
+			children = (
+				F386C6C82173BF25001B8500 /* Teacher.swift */,
+				F386C6C62173BEF8001B8500 /* Subject.swift */,
+				F386C6C42173BEDD001B8500 /* Weekday.swift */,
+				F386C6C22173BEA0001B8500 /* StudSchedule.swift */,
+			);
+			path = ScheduleClasses;
+			sourceTree = "<group>";
+		};
 		F33DAC1B217E50D8006C65C5 /* APIStructures */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,10 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				F33DAC1B217E50D8006C65C5 /* APIStructures */,
-				F386C6C82173BF25001B8500 /* Teacher.swift */,
-				F386C6C62173BEF8001B8500 /* Subject.swift */,
-				F386C6C42173BEDD001B8500 /* Weekday.swift */,
-				F386C6C22173BEA0001B8500 /* StudSchedule.swift */,
+				F30D9A03219A08AB00BF845F /* ScheduleClasses */,
 				F3FA1A5C2174695100A3E06C /* Parser.swift */,
 				F39DB7572198AF9B00FE5A89 /* OnlineData.swift */,
 				F3FA1A6021749C3F00A3E06C /* Schedule.swift */,

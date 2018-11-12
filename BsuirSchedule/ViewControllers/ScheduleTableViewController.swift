@@ -40,23 +40,6 @@ class ScheduleTableViewController: UITableViewController {
         loadSettings()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if ScheduleMain.selectedGroup != self.schedule?.title {
-            var schedule = ScheduleMain.studSchedules.filter{$0.title == ScheduleMain.selectedGroup}
-            if schedule.count == 0 {
-                if let studSchedules = Parser.getSchedule(forGroup: ScheduleMain.selectedGroup!, subgroup: ScheduleMain.selectedSubgroup!) {
-                    ScheduleMain.studSchedules.append(studSchedules)
-                    schedule = ScheduleMain.studSchedules.filter{$0.title == ScheduleMain.selectedGroup}
-                    if schedule.count > 0 { self.schedule = schedule[0] }
-                    self.tableView.reloadData()
-                    ScheduleMain.saveData()
-                }
-            }
-            self.title = ScheduleMain.selectedGroup
-        }
-    }
-    
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         return schedule?.schedule.count ?? 0
     }
@@ -76,5 +59,40 @@ class ScheduleTableViewController: UITableViewController {
         cell.subject = subject
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let settingsTableViewController = segue.destination as? SettingsTableViewController {
+            settingsTableViewController.delegate = self
+        }
+    }
 
+}
+
+extension ScheduleTableViewController: SettingsTableViewControllerDelegate {
+    
+    func SettingsTableViewControllerDidCancel(_ controller: SettingsTableViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
+    func SettingsTableViewControllerDidUpdated(_ controller: SettingsTableViewController) {
+        var schedule = ScheduleMain.studSchedules.filter{$0.title == ScheduleMain.selectedGroup}
+        if schedule.count == 0 {
+            if let studSchedules = Parser.getSchedule(forGroup: ScheduleMain.selectedGroup!, subgroup: ScheduleMain.selectedSubgroup!) {
+                ScheduleMain.studSchedules.append(studSchedules)
+                schedule = ScheduleMain.studSchedules.filter{$0.title == ScheduleMain.selectedGroup}
+                if schedule.count > 0 { self.schedule = schedule[0] }
+                self.tableView.reloadData()
+                ScheduleMain.saveData()
+            }
+        } else {
+            schedule = ScheduleMain.studSchedules.filter{$0.title == ScheduleMain.selectedGroup}
+            if schedule.count > 0 { self.schedule = schedule[0] }
+            self.tableView.reloadData()
+            ScheduleMain.saveData()
+        }
+        self.title = ScheduleMain.selectedGroup
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
