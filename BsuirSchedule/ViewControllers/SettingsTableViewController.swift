@@ -8,20 +8,32 @@
 
 import UIKit
 
-class SettingsTableViewController: UITableViewController {
+protocol SettingsTableViewControllerDelegate: class {
+    func SettingsTableViewControllerDidCancel(_ controller: SettingsTableViewController)
+    func SettingsTableViewControllerDidFinishAdding(_ controller: SettingsTableViewController)
+}
 
+class SettingsTableViewController: UITableViewController {
+    
     @IBOutlet weak var subgroupControl: UISegmentedControl!
     @IBOutlet weak var subgroupCell: UITableViewCell!
     @IBOutlet weak var groupCell: UITextField!
+    @IBOutlet weak var updateBarItem: UIBarButtonItem!
+    @IBOutlet weak var cancekBarItem: UIBarButtonItem!
     
     var groups: [String]?
     var week: Int?
+    weak var delegate: SettingsTableViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         groups = OnlineData.availableGroups
         groups?.sort()
         week = OnlineData.currentWeek
+    }
+    
+    @IBAction func cancel(_ sender: Any) {
+        delegate?.SettingsTableViewControllerDidCancel(self)
     }
     
     @IBAction func groupDidEdited(_ sender: UITextField) {
@@ -77,5 +89,31 @@ class SettingsTableViewController: UITableViewController {
             }
         }
     }
+    
+}
+
+extension SettingsTableViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        groupCell.resignFirstResponder()
+        return false
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        guard let oldText = groupCell.text,
+            let stringRange = Range(range, in: oldText) else {
+                return false
+        }
+        
+        let newText = oldText.replacingCharacters(in: stringRange, with: string)
+        if newText.isEmpty {
+            updateBarItem.isEnabled = false
+        } else {
+            updateBarItem.isEnabled = true
+        }
+        return true
+    }
+    
     
 }

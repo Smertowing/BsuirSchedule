@@ -326,6 +326,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="gUQ-k0-Rf0">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="RVr-GL-xjp">
+                            <connections>
+                                <action selector="cancel:" destination="zdH-A9-nw4" id="tCc-a9-2Sq"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Update" id="f4P-4h-RhZ">
                             <connections>
                                 <action selector="updateTapped:" destination="zdH-A9-nw4" id="9sf-Dl-7IT"/>
@@ -333,9 +338,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancekBarItem" destination="RVr-GL-xjp" id="T8I-ZQ-wEx"/>
                         <outlet property="groupCell" destination="vyz-7p-nv0" id="hfh-KR-DJA"/>
                         <outlet property="subgroupCell" destination="u3Y-vL-Xqs" id="4Ld-kK-PcX"/>
                         <outlet property="subgroupControl" destination="n9f-xm-EnN" id="R8g-BM-neL"/>
+                        <outlet property="updateBarItem" destination="f4P-4h-RhZ" id="dm9-06-Nyn"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nb4-xe-tr1" userLabel="First Responder" sceneMemberID="firstResponder"/>

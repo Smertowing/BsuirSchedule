@@ -35,8 +35,6 @@ class ScheduleTableViewController: UITableViewController {
         ScheduleMain.saveData()
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadSettings()
