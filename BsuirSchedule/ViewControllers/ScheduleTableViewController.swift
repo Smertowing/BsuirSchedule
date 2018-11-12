@@ -31,15 +31,31 @@ class ScheduleTableViewController: UITableViewController {
         var schedule = ScheduleMain.studSchedules.filter{$0.title == ScheduleMain.selectedGroup}
         if schedule.count > 0 { self.schedule = schedule[0] }
         self.tableView.reloadData()
+        self.title = ScheduleMain.selectedGroup
         ScheduleMain.saveData()
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadSettings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadSettings()
+        if ScheduleMain.selectedGroup != self.schedule?.title {
+            var schedule = ScheduleMain.studSchedules.filter{$0.title == ScheduleMain.selectedGroup}
+            if schedule.count == 0 {
+                if let studSchedules = Parser.getSchedule(forGroup: ScheduleMain.selectedGroup!, subgroup: ScheduleMain.selectedSubgroup!) {
+                    ScheduleMain.studSchedules.append(studSchedules)
+                    schedule = ScheduleMain.studSchedules.filter{$0.title == ScheduleMain.selectedGroup}
+                    if schedule.count > 0 { self.schedule = schedule[0] }
+                    self.tableView.reloadData()
+                    ScheduleMain.saveData()
+                }
+            }
+            self.title = ScheduleMain.selectedGroup
+        }
     }
     
 

@@ -123,7 +123,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsz-hL-0Fj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-183" y="464"/>
+            <point key="canvasLocation" x="-190" y="464"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NhQ-oI-HGZ">
@@ -164,9 +164,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="continue" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="numbersAndPunctuation" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
-                                                        <action selector="groupDidEdited:" destination="zdH-A9-nw4" eventType="editingDidEnd" id="spi-ss-SWC"/>
+                                                        <action selector="groupDidEdited:" destination="zdH-A9-nw4" eventType="editingDidEndOnExit" id="qvb-yU-zBI"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -340,7 +340,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nb4-xe-tr1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="660" y="463.71814092953525"/>
+            <point key="canvasLocation" x="742" y="464"/>
         </scene>
     </scenes>
     <resources>

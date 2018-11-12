@@ -145,8 +145,8 @@
 				F386C6C42173BEDD001B8500 /* Weekday.swift */,
 				F386C6C22173BEA0001B8500 /* StudSchedule.swift */,
 				F3FA1A5C2174695100A3E06C /* Parser.swift */,
-				F3FA1A6021749C3F00A3E06C /* Schedule.swift */,
 				F39DB7572198AF9B00FE5A89 /* OnlineData.swift */,
+				F3FA1A6021749C3F00A3E06C /* Schedule.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
