@@ -15,6 +15,7 @@ protocol SettingsTableViewControllerDelegate: class {
 
 class SettingsTableViewController: UITableViewController {
     
+    @IBOutlet var settingsTable: UITableView!
     @IBOutlet weak var subgroupControl: UISegmentedControl!
     @IBOutlet weak var subgroupCell: UITableViewCell!
     @IBOutlet weak var groupCell: UITextField!
@@ -22,7 +23,6 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var cancekBarItem: UIBarButtonItem!
     
     var groups: [String]?
-    var week: Int?
     weak var delegate: SettingsTableViewControllerDelegate?
     
     override func viewDidLoad() {
@@ -73,7 +73,7 @@ class SettingsTableViewController: UITableViewController {
                         for i in 0..<4 {
                             var indexPathTemp = indexPath
                             indexPathTemp.row = i
-                            if i == week {
+                            if i == ScheduleMain.allGroupsAndWeek?.currentWeek {
                                 tableView.cellForRow(at: indexPathTemp)?.accessoryType = .checkmark
                                 ScheduleMain.selectedWeeks[i] = true
                             } else {

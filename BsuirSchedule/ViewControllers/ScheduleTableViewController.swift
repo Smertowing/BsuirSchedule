@@ -85,14 +85,23 @@ extension ScheduleTableViewController: SettingsTableViewControllerDelegate {
                 ScheduleMain.studSchedules.append(studSchedules)
                 schedule = ScheduleMain.studSchedules.filter{($0.title == ScheduleMain.selectedGroup) && ($0.subgroup == ScheduleMain.selectedSubgroup)}
                 if schedule.count > 0 { self.schedule = schedule[0] }
-                self.tableView.reloadData()
                 ScheduleMain.saveData()
             }
         } else {
             if schedule.count > 0 { self.schedule = schedule[0] }
-            self.tableView.reloadData()
             ScheduleMain.saveData()
         }
+        for schedule in self.schedule?.schedule ?? [] {
+            schedule.subjects = schedule.subjects.filter{
+                for i in $0.weekNumber {
+                    if ScheduleMain.selectedWeeks[i-1] {
+                        return true
+                    }
+                }
+                return false
+            }
+        }
+        self.tableView.reloadData()
         self.title = ScheduleMain.selectedGroup
         navigationController?.popViewController(animated: true)
     }

@@ -322,15 +322,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" editingAccessoryType="checkmark" id="Q6p-QJ-EYY">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" editingAccessoryType="checkmark" id="Q6p-QJ-EYY">
                                         <rect key="frame" x="0.0" y="435.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q6p-QJ-EYY" id="fce-Xu-blX">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only current" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAP-ib-Gid">
-                                                    <rect key="frame" x="16" y="11" width="343" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="311" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -367,6 +367,7 @@
                     <connections>
                         <outlet property="cancekBarItem" destination="RVr-GL-xjp" id="T8I-ZQ-wEx"/>
                         <outlet property="groupCell" destination="vyz-7p-nv0" id="hfh-KR-DJA"/>
+                        <outlet property="settingsTable" destination="dXK-Yp-yKv" id="Cp5-ER-LYr"/>
                         <outlet property="subgroupCell" destination="u3Y-vL-Xqs" id="4Ld-kK-PcX"/>
                         <outlet property="subgroupControl" destination="n9f-xm-EnN" id="R8g-BM-neL"/>
                         <outlet property="updateBarItem" destination="f4P-4h-RhZ" id="dm9-06-Nyn"/>
