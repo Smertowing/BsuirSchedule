@@ -28,9 +28,7 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         groupCell.text = ScheduleMain.selectedGroup
-        groups = OnlineData.availableGroups
         groups?.sort()
-        week = OnlineData.currentWeek
     }
     
     @IBAction func cancel(_ sender: Any) {

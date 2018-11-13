@@ -11,6 +11,7 @@ import Foundation
 class ScheduleMain {
     
     static var lastUpdate: Date? = Date(timeIntervalSinceReferenceDate: 0)
+    static var allGroupsAndWeek: GroupsAndWeek?
     static var studSchedules: [StudSchedule] = []
     static var selectedGroup: String? = "751006"
     static var selectedSubgroup: Int? = 2
@@ -22,17 +23,18 @@ class ScheduleMain {
         case selectedGroup = "selectedGroup.brakh"
         case selectedSubgroup = "selectedSubgroup.brakh"
         case lastUpdate = "lastUpdate.brakh"
+        case groups = "groups.brakh"
     }
     
     static func saveData() {
         do {
             try saveSchedules()
             try saveSettings()
+            try saveGroups()
         } catch {
             print(errno)
         }
     }
-    
     
     static func loadData() -> Bool {
         let dataURL: URL = dURL
@@ -46,7 +48,11 @@ class ScheduleMain {
         lastUpdate = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(codedLastUpdate) as? Date
         
         guard let codedData = try? Data(contentsOf: dataURL.appendingPathComponent(selectedGroup!).appendingPathComponent(Keys.schedules.rawValue)) else { return false }
-        studSchedules = try! (NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(codedData) as? [StudSchedule])! 
+        studSchedules = try! (NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(codedData) as? [StudSchedule])!
+        
+        guard let codedAllGroups = try? Data(contentsOf: dataURL.appendingPathComponent("allGroups").appendingPathComponent(Keys.groups.rawValue)) else { return false }
+        allGroupsAndWeek = try! (NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(codedAllGroups) as? GroupsAndWeek)!
+        
         return true
     }
     
@@ -71,6 +77,14 @@ class ScheduleMain {
         
         let codedLastUpdate = try! NSKeyedArchiver.archivedData(withRootObject: lastUpdate!, requiringSecureCoding: true)
         try codedLastUpdate.write(to: dataURL.appendingPathComponent(Keys.lastUpdate.rawValue))
+    }
+    
+    private static func saveGroups() throws {
+        let dataURL = dURL.appendingPathComponent("allGroups")
+        try? FileManager.default.createDirectory(at: dataURL, withIntermediateDirectories: true, attributes: nil)
+        
+        let codedAllGroups = try! NSKeyedArchiver.archivedData(withRootObject: allGroupsAndWeek!, requiringSecureCoding: true)
+        try codedAllGroups.write(to: dataURL.appendingPathComponent(Keys.groups.rawValue))
     }
     
     private init() {}

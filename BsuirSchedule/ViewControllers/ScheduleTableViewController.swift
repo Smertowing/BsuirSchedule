@@ -38,7 +38,7 @@ class ScheduleTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadSettings()
-        OnlineData.downloadData()
+        ScheduleMain.allGroupsAndWeek?.currentWeek = Parser.getCurrentWeek()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
