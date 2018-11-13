@@ -8,7 +8,11 @@
 
 import Foundation
 
-class OnlineData {
+class OnlineData: NSObject, NSCoding, NSSecureCoding {
+    
+    static var supportsSecureCoding: Bool {
+        return true
+    }
     
     static var currentWeek: Int?
     static var availableGroups: [String]?
@@ -18,6 +22,12 @@ class OnlineData {
         self.currentWeek = Parser.getCurrentWeek()
     }
     
-    private init() {}
+    func encode(with aCoder: NSCoder) {
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+    }
     
 }

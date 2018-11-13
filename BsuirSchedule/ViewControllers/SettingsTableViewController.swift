@@ -27,7 +27,7 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        OnlineData.downloadData()
+        groupCell.text = ScheduleMain.selectedGroup
         groups = OnlineData.availableGroups
         groups?.sort()
         week = OnlineData.currentWeek
@@ -38,7 +38,15 @@ class SettingsTableViewController: UITableViewController {
     }
     
     @IBAction func updateTapped(_ sender: Any) {
+        let activityView: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
+        activityView.center = self.view.center
+        activityView.hidesWhenStopped = true
+        self.view.addSubview(activityView)
+        activityView.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         delegate?.SettingsTableViewControllerDidUpdated(self)
+        UIApplication.shared.endIgnoringInteractionEvents()
+        activityView.stopAnimating()
     }
     
     @IBAction func groupDidEdited(_ sender: UITextField) {

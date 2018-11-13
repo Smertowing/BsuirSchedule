@@ -38,6 +38,7 @@ class ScheduleTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadSettings()
+        OnlineData.downloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
