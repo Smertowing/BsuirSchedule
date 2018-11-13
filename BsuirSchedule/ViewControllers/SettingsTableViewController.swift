@@ -29,6 +29,7 @@ class SettingsTableViewController: UITableViewController {
         super.viewDidLoad()
         groupCell.text = ScheduleMain.selectedGroup
         groups?.sort()
+        subgroupControl.selectedSegmentIndex = ScheduleMain.selectedSubgroup ?? 0
     }
     
     @IBAction func cancel(_ sender: Any) {

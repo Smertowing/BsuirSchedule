@@ -16,6 +16,7 @@ class ScheduleTableViewCell: UITableViewCell {
     @IBOutlet weak var auditory: UILabel!
     @IBOutlet weak var weekNumber: UILabel!
     @IBOutlet weak var subgroup: UILabel!
+    @IBOutlet weak var subgroupLetter: UILabel!
     @IBOutlet weak var photo: UIImageView!
     
     func update() {
@@ -43,8 +44,10 @@ class ScheduleTableViewCell: UITableViewCell {
             if let subgroup = subject?.subgroup {
                 self.subgroup.text = String(subgroup)
             }
+            self.subgroupLetter.isHidden = false
         } else {
             self.subgroup.text = ""
+            self.subgroupLetter.isHidden = true
         }
         
     }

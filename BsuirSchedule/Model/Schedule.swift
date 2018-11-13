@@ -11,7 +11,7 @@ import Foundation
 class ScheduleMain {
     
     static var lastUpdate: Date? = Date(timeIntervalSinceReferenceDate: 0)
-    static var allGroupsAndWeek: GroupsAndWeek?
+    static var allGroupsAndWeek: GroupsAndWeek? = GroupsAndWeek.init(availableGroups: [])
     static var studSchedules: [StudSchedule] = []
     static var selectedGroup: String? = "751006"
     static var selectedSubgroup: Int? = 2

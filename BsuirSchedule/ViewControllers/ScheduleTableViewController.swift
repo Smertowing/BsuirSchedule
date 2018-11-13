@@ -21,11 +21,13 @@ class ScheduleTableViewController: UITableViewController {
                         ScheduleMain.lastUpdate = tempLastUpate
                     }
                 }
+                ScheduleMain.allGroupsAndWeek?.availableGroups = Parser.getGroups() ?? []
             }
         } else {
             if let studSchedules = Parser.getSchedule(forGroup: ScheduleMain.selectedGroup!, subgroup: ScheduleMain.selectedSubgroup!) {
                 ScheduleMain.studSchedules.append(studSchedules)
             }
+            ScheduleMain.allGroupsAndWeek?.availableGroups = Parser.getGroups() ?? []
         }
         
         var schedule = ScheduleMain.studSchedules.filter{$0.title == ScheduleMain.selectedGroup}
@@ -77,17 +79,16 @@ extension ScheduleTableViewController: SettingsTableViewControllerDelegate {
     
     
     func SettingsTableViewControllerDidUpdated(_ controller: SettingsTableViewController) {
-        var schedule = ScheduleMain.studSchedules.filter{$0.title == ScheduleMain.selectedGroup}
+        var schedule = ScheduleMain.studSchedules.filter{($0.title == ScheduleMain.selectedGroup) && ($0.subgroup == ScheduleMain.selectedSubgroup)}
         if schedule.count == 0 {
             if let studSchedules = Parser.getSchedule(forGroup: ScheduleMain.selectedGroup!, subgroup: ScheduleMain.selectedSubgroup!) {
                 ScheduleMain.studSchedules.append(studSchedules)
-                schedule = ScheduleMain.studSchedules.filter{$0.title == ScheduleMain.selectedGroup}
+                schedule = ScheduleMain.studSchedules.filter{($0.title == ScheduleMain.selectedGroup) && ($0.subgroup == ScheduleMain.selectedSubgroup)}
                 if schedule.count > 0 { self.schedule = schedule[0] }
                 self.tableView.reloadData()
                 ScheduleMain.saveData()
             }
         } else {
-            schedule = ScheduleMain.studSchedules.filter{$0.title == ScheduleMain.selectedGroup}
             if schedule.count > 0 { self.schedule = schedule[0] }
             self.tableView.reloadData()
             ScheduleMain.saveData()
