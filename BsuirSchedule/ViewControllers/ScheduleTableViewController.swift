@@ -20,8 +20,9 @@ class ScheduleTableViewController: UITableViewController {
                         ScheduleMain.studSchedules.append(studSchedules)
                         ScheduleMain.lastUpdate = tempLastUpate
                     }
+                    ScheduleMain.allGroupsAndWeek?.availableGroups = Parser.getGroups() ?? []
                 }
-                ScheduleMain.allGroupsAndWeek?.availableGroups = Parser.getGroups() ?? []
+                
             }
         } else {
             if let studSchedules = Parser.getSchedule(forGroup: ScheduleMain.selectedGroup!, subgroup: ScheduleMain.selectedSubgroup!) {
