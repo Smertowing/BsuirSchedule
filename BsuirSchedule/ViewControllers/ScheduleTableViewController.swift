@@ -64,6 +64,11 @@ class ScheduleTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.isSelected = false
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let settingsTableViewController = segue.destination as? SettingsTableViewController {
             settingsTableViewController.delegate = self
