@@ -92,7 +92,7 @@ extension ScheduleTableViewController: SettingsTableViewControllerDelegate {
     
     
     func SettingsTableViewControllerDidUpdated(_ controller: SettingsTableViewController) {
-        var schedule = ScheduleMain.studSchedules.filter{($0.title == ScheduleMain.selectedGroup)}
+        var schedule = ScheduleMain.studSchedules.filter{($0.title == ScheduleMain.selectedGroup) && ($0.subgroup == ScheduleMain.selectedSubgroup || ScheduleMain.selectedSubgroup == 0)}
         if schedule.count == 0 {
             if let studSchedules = Parser.getSchedule(forGroup: ScheduleMain.selectedGroup!, subgroup: ScheduleMain.selectedSubgroup!) {
                 ScheduleMain.studSchedules.append(studSchedules)
