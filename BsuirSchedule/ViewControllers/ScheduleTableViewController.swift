@@ -66,7 +66,7 @@ class ScheduleTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell") as! ScheduleTableViewCell
+        let cell = tableView.cellForRow(at: indexPath) as! ScheduleTableViewCell
         selectedSubject = cell.subject
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let subjectViewController = storyboard.instantiateViewController(withIdentifier: "subjectVC") as! SubjectViewController

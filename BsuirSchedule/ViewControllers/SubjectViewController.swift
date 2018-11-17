@@ -16,14 +16,56 @@ protocol SubjectViewControllerDelegate: class {
 
 class SubjectViewController: UIViewController {
     
+    @IBOutlet weak var lessonTime: UILabel!
+    @IBOutlet weak var lessonType: UIImageView!
+    @IBOutlet weak var auditory: UILabel!
+    @IBOutlet weak var weekNumber: UILabel!
+    @IBOutlet weak var subgroup: UILabel!
+    @IBOutlet weak var subgroupLabel: UILabel!
+    @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var notesField: UITextView!
     
     weak var subject: Subject?
     weak var delegate: SubjectViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = subject?.title
+        
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
+        let titleString = (subject?.title ?? "?") + " (" + (subject?.subjectType ?? "?") + ")"
+        self.navigationItem.title = titleString
+        if subject!.teachers.count > 0 {
+            self.nameLabel.text = subject?.teachers[0].fullName
+            self.photo.image = subject?.teachers[0].photo
+        }
+
+        self.auditory.text = subject?.auditory
+        self.lessonTime.text = subject?.time
+        
+        var weeks = ""
+        for weekNumber in (subject?.weekNumber)! {
+            weeks += String(weekNumber) + " "
+        }
+        self.weekNumber.text = weeks
+        switch subject?.subjectType {
+        case "ЛК": lessonType.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        case "ПЗ": lessonType.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+        case "ЛР": lessonType.backgroundColor = #colorLiteral(red: 1, green: 0.8784313725, blue: 0.07843137255, alpha: 1)
+        default: lessonType.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        }
+        if !(subject?.subgroup == 0) {
+            if let subgroup = subject?.subgroup {
+                self.subgroup.text = String(subgroup)
+            }
+            self.subgroupLabel.isHidden = false
+        } else {
+            self.subgroup.text = ""
+            self.subgroupLabel.isHidden = true
+        }
     }
     
     @IBAction func cancel(_ sender: Any) {
@@ -33,6 +75,14 @@ class SubjectViewController: UIViewController {
     @IBAction func updateTapped(_ sender: Any) {
         delegate?.SubjectViewControllerDidUpdated(self)
     }
-
+    
 }
 
+extension SubjectViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        notesField.resignFirstResponder()
+        return false
+    }
+    
+}
