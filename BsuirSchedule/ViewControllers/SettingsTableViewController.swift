@@ -27,6 +27,7 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        groupCell.delegate = self
         groupCell.text = ScheduleMain.selectedGroup
         groups?.sort()
         subgroupControl.selectedSegmentIndex = ScheduleMain.selectedSubgroup ?? 0
@@ -118,6 +119,7 @@ extension SettingsTableViewController: UITextFieldDelegate {
         }
         return true
     }
+    
     
     
 }

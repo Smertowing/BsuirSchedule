@@ -14,7 +14,7 @@ protocol SubjectViewControllerDelegate: class {
 }
 
 
-class SubjectViewController: UIViewController {
+class SubjectViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var lessonTime: UILabel!
     @IBOutlet weak var lessonType: UIImageView!
@@ -29,14 +29,17 @@ class SubjectViewController: UIViewController {
     weak var subject: Subject?
     weak var delegate: SubjectViewControllerDelegate?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        notesField.delegate = self
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
         
-        let titleString = (subject?.title ?? "?") + " (" + (subject?.subjectType ?? "?") + ")"
+        let firstPart = subject?.title ?? "?"
+        let secondPart = subject?.subjectType ?? "?"
+        let titleString = firstPart + " (" + secondPart + ")"
         self.navigationItem.title = titleString
         if subject!.teachers.count > 0 {
             self.nameLabel.text = subject?.teachers[0].fullName
@@ -78,11 +81,24 @@ class SubjectViewController: UIViewController {
     
 }
 
-extension SubjectViewController: UITextFieldDelegate {
+extension SubjectViewController: UITextViewDelegate {
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        notesField.resignFirstResponder()
-        return false
+    func textViewDidBeginEditing(_ textview: UITextView) {
+        moveViewField(textview: textview, moveDistance: -250, up: true)
+    }
+    
+    func textViewDidEndEditing(_ textview: UITextView) {
+        moveViewField(textview: textview, moveDistance: -250, up: false)
+    }
+    
+    func moveViewField(textview: UITextView, moveDistance: Int, up: Bool) {
+        let moveDuration = 0.3
+        let movement: CGFloat = CGFloat(up ? moveDistance: -moveDistance)
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(moveDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
     }
     
 }
