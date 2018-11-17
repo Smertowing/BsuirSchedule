@@ -10,7 +10,7 @@ import UIKit
 
 protocol SubjectViewControllerDelegate: class {
     func SubjectViewControllerDidCancel(_ controller: SubjectViewController)
-    func SubjectViewControllerDidUpdated(_ controller: SubjectViewController)
+    func SubjectViewControllerDidUpdated(_ controller: SubjectViewController, updatedNotes: String)
 }
 
 
@@ -69,6 +69,7 @@ class SubjectViewController: UIViewController, UITextFieldDelegate {
             self.subgroup.text = ""
             self.subgroupLabel.isHidden = true
         }
+        notesField.text = subject?.notes
     }
     
     @IBAction func cancel(_ sender: Any) {
@@ -76,7 +77,7 @@ class SubjectViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func updateTapped(_ sender: Any) {
-        delegate?.SubjectViewControllerDidUpdated(self)
+        delegate?.SubjectViewControllerDidUpdated(self, updatedNotes: notesField.text)
     }
     
 }

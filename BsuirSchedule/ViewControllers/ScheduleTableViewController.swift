@@ -11,7 +11,7 @@ import UIKit
 class ScheduleTableViewController: UITableViewController {
 
     var schedule: StudSchedule?
-    var selectedSubject: Subject?
+    var selectedIndexPath: IndexPath?
     
     func loadSettings() {
         if ScheduleMain.loadData() {
@@ -66,11 +66,10 @@ class ScheduleTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! ScheduleTableViewCell
-        selectedSubject = cell.subject
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let subjectViewController = storyboard.instantiateViewController(withIdentifier: "subjectVC") as! SubjectViewController
-        subjectViewController.subject = selectedSubject
+        selectedIndexPath = indexPath
+        subjectViewController.subject = schedule?.schedule[selectedIndexPath!.section].subjects[selectedIndexPath!.row]
         subjectViewController.delegate = self
         self.show(subjectViewController, sender: self)
         tableView.cellForRow(at: indexPath)?.isSelected = false
@@ -131,9 +130,10 @@ extension ScheduleTableViewController: SubjectViewControllerDelegate {
         navigationController?.popViewController(animated: true)
     }
     
-    func SubjectViewControllerDidUpdated(_ controller: SubjectViewController) {
+    func SubjectViewControllerDidUpdated(_ controller: SubjectViewController, updatedNotes: String) {
         navigationController?.popViewController(animated: true)
-        self.tableView.reloadData()
+        schedule?.schedule[selectedIndexPath!.section].subjects[selectedIndexPath!.row].notes = updatedNotes
+        selectedIndexPath = nil
     }
     
 }

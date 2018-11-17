@@ -22,6 +22,7 @@ class Subject: NSObject, NSCoding, NSSecureCoding {
     var weekNumber : [Int]
     var subgroup: Int
     var subjectType: String
+    var notes: String = ""
     
     init(title: String, auditory: String, time: String, teachers: [Teacher], weekNumber: [Int], subgroup: Int, subjectType: String){
         self.title = title
