@@ -11,6 +11,7 @@ import UIKit
 class ScheduleTableViewController: UITableViewController {
 
     var schedule: StudSchedule?
+    var selectedSubject: Subject?
     
     func loadSettings() {
         if ScheduleMain.loadData() {
@@ -65,6 +66,13 @@ class ScheduleTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell") as! ScheduleTableViewCell
+        selectedSubject = cell.subject
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let subjectViewController = storyboard.instantiateViewController(withIdentifier: "subjectVC") as! SubjectViewController
+        subjectViewController.subject = selectedSubject
+        subjectViewController.delegate = self
+        self.show(subjectViewController, sender: self)
         tableView.cellForRow(at: indexPath)?.isSelected = false
         
     }
@@ -72,7 +80,7 @@ class ScheduleTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let settingsTableViewController = segue.destination as? SettingsTableViewController {
             settingsTableViewController.delegate = self
-        }
+        } 
     }
 
 }
@@ -85,7 +93,7 @@ extension ScheduleTableViewController: SettingsTableViewControllerDelegate {
     
     
     func SettingsTableViewControllerDidUpdated(_ controller: SettingsTableViewController) {
-        var schedule = ScheduleMain.studSchedules.filter{($0.title == ScheduleMain.selectedGroup) && ($0.subgroup == ScheduleMain.selectedSubgroup)}
+        var schedule = ScheduleMain.studSchedules.filter{($0.title == ScheduleMain.selectedGroup)}
         if schedule.count == 0 {
             if let studSchedules = Parser.getSchedule(forGroup: ScheduleMain.selectedGroup!, subgroup: ScheduleMain.selectedSubgroup!) {
                 ScheduleMain.studSchedules.append(studSchedules)
@@ -99,6 +107,9 @@ extension ScheduleTableViewController: SettingsTableViewControllerDelegate {
         }
         for schedule in self.schedule?.schedule ?? [] {
             schedule.subjects = schedule.subjects.filter{
+                if ($0.subgroup != 0) && ($0.subgroup != ScheduleMain.selectedSubgroup) {
+                    return false
+                }
                 for i in $0.weekNumber {
                     if ScheduleMain.selectedWeeks[i-1] {
                         return true
@@ -110,6 +121,19 @@ extension ScheduleTableViewController: SettingsTableViewControllerDelegate {
         self.tableView.reloadData()
         self.title = ScheduleMain.selectedGroup
         navigationController?.popViewController(animated: true)
+    }
+    
+}
+
+extension ScheduleTableViewController: SubjectViewControllerDelegate {
+    
+    func SubjectViewControllerDidCancel(_ controller: SubjectViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func SubjectViewControllerDidUpdated(_ controller: SubjectViewController) {
+        navigationController?.popViewController(animated: true)
+        self.tableView.reloadData()
     }
     
 }

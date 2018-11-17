@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -151,6 +152,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsz-hL-0Fj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-191.19999999999999" y="463.71814092953525"/>
+        </scene>
+        <!--Subject-->
+        <scene sceneID="bsy-n4-bUm">
+            <objects>
+                <viewController storyboardIdentifier="subjectVC" id="hX2-bo-iin" customClass="SubjectViewController" customModule="BsuirSchedule" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gWk-9K-yo3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emp-tZ-16Z">
+                                <rect key="frame" x="186" y="72" width="173" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="Pci-7O-dl0">
+                                <rect key="frame" x="16" y="72" width="130" height="114"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="WMD-MO-dyE"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0MF-df-0g8" firstAttribute="bottom" secondItem="Pci-7O-dl0" secondAttribute="bottom" constant="481" id="167-8z-o9U"/>
+                            <constraint firstItem="emp-tZ-16Z" firstAttribute="leading" secondItem="Pci-7O-dl0" secondAttribute="trailing" constant="40" id="K6K-qO-tkW"/>
+                            <constraint firstItem="emp-tZ-16Z" firstAttribute="trailing" secondItem="gWk-9K-yo3" secondAttribute="trailingMargin" id="PI0-im-v5k"/>
+                            <constraint firstItem="Pci-7O-dl0" firstAttribute="top" secondItem="0MF-df-0g8" secondAttribute="top" constant="52" id="R2m-Y9-SRP"/>
+                            <constraint firstItem="Pci-7O-dl0" firstAttribute="leading" secondItem="gWk-9K-yo3" secondAttribute="leadingMargin" id="XTx-Tl-pHh"/>
+                            <constraint firstItem="Pci-7O-dl0" firstAttribute="top" secondItem="emp-tZ-16Z" secondAttribute="top" id="a3s-tg-NYO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0MF-df-0g8"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Subject" id="Ge9-Cz-ak9">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="lNG-iS-QU1">
+                            <connections>
+                                <action selector="cancel:" destination="hX2-bo-iin" id="LlL-xg-gB5"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Update" id="hEn-yj-yd5">
+                            <connections>
+                                <action selector="updateTapped:" destination="hX2-bo-iin" id="Wjc-2m-uTU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameLabel" destination="emp-tZ-16Z" id="JbU-v1-mbc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="acu-FP-NMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-191.19999999999999" y="1214.8425787106448"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NhQ-oI-HGZ">
@@ -376,14 +429,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nb4-xe-tr1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="742" y="464"/>
-        </scene>
-        <!--Page View Controller-->
-        <scene sceneID="vVq-0h-YWy">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="FIf-Bg-oI9" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BeD-HU-ZC7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1714" y="464"/>
         </scene>
     </scenes>
     <resources>
