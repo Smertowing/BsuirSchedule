@@ -35,6 +35,14 @@ class SettingsTableViewController: UITableViewController, UIGestureRecognizerDel
         groupCell.text = userSchedule.selectedGroup ?? "Group"
         groups?.sort()
         subgroupControl.selectedSegmentIndex = userSchedule.selectedSubgroup ?? 0
+        
+        
+        for i in 0..<4 {
+            let indexPath = IndexPath(row: i, section: 2)
+            if let cell = settingsTable.cellForRow(at: indexPath) {
+                if userSchedule.selectedWeeks[i] { cell.accessoryType = .checkmark}
+            }
+        }
     }
     
     @IBAction func cancel(_ sender: Any) {
@@ -95,6 +103,16 @@ class SettingsTableViewController: UITableViewController, UIGestureRecognizerDel
                         cell.accessoryType = .checkmark
                     }
                     userSchedule.selectedWeeks[indexPath.row].toggle()
+                }
+            }
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.section == 2 {
+            if indexPath.row < 4 {
+                if userSchedule.selectedWeeks[indexPath.row] {
+                    cell.accessoryType = .checkmark
                 }
             }
         }

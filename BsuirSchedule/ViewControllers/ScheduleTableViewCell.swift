@@ -25,6 +25,8 @@ class ScheduleTableViewCell: UITableViewCell {
         self.lessonTime.text = subject?.time
         if subject!.teachers.count > 0 {
             self.photo.image = subject?.teachers[0].photo
+        } else {
+            self.photo.image = #imageLiteral(resourceName: "user")
         }
         
         var weeks = ""
