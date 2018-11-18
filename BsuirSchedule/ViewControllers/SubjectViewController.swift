@@ -49,8 +49,11 @@ class SubjectViewController: UIViewController, UITextFieldDelegate, UIGestureRec
             self.nameLabel.text = subject?.teachers[0].fullName
             self.photo.image = subject?.teachers[0].photo
         }
-
+        
         self.auditory.text = subject?.auditory
+        if self.auditory.text == "" {
+            self.auditory.text = "?"
+        }
         self.lessonTime.text = subject?.time
         
         var weeks = ""

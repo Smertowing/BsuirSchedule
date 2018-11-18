@@ -101,7 +101,7 @@ class Parser {
                             teachers.append(Teacher(id: teacher.id!, fullName: fullName, photo: photo))
                         }
                         let subjectType = subject.lessonType ?? "Неизвестно"
-                        tempSubjects.append(Subject(title: title, auditory: auditory, time: time, teachers: teachers, weekNumber: weekNumber, subgroup: tempsubgroup, subjectType: subjectType, notes: "Тыкни на меня!"))
+                        tempSubjects.append(Subject(title: title, auditory: auditory, time: time, teachers: teachers, weekNumber: weekNumber, subgroup: tempsubgroup, subjectType: subjectType, notes: ""))
                     }
                     tempShedules.append(Weekday(title: schedule.weekDay!, subjects: tempSubjects))
                 }

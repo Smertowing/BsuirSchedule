@@ -123,6 +123,7 @@ extension ScheduleTableViewController: SubjectViewControllerDelegate {
     
     func SubjectViewControllerDidUpdated(_ controller: SubjectViewController, updatedNotes: String) {
         schedule?.schedule[selectedIndexPath!.section].subjects[selectedIndexPath!.row].notes = updatedNotes
+        userSchedule.saveData()
         selectedIndexPath = nil
         navigationController?.popViewController(animated: true)
     }
