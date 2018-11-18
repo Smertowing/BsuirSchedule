@@ -22,9 +22,9 @@ class Subject: NSObject, NSCoding, NSSecureCoding {
     var weekNumber : [Int]
     var subgroup: Int
     var subjectType: String
-    var notes: String = ""
+    var notes: String
     
-    init(title: String, auditory: String, time: String, teachers: [Teacher], weekNumber: [Int], subgroup: Int, subjectType: String){
+    init(title: String, auditory: String, time: String, teachers: [Teacher], weekNumber: [Int], subgroup: Int, subjectType: String, notes: String){
         self.title = title
         self.auditory = auditory
         self.time = time
@@ -43,6 +43,7 @@ class Subject: NSObject, NSCoding, NSSecureCoding {
         self.weekNumber = weekNumber
         self.subgroup = subgroup
         self.subjectType = subjectType
+        self.notes = notes
     }
     
     private enum Key: String {
@@ -53,6 +54,7 @@ class Subject: NSObject, NSCoding, NSSecureCoding {
         case weekNumber = "weekNumber"
         case subgroup = "subgroup"
         case subjectType = "subjectType"
+        case notes = "notes"
     }
     
     func encode(with aCoder: NSCoder) {
@@ -63,6 +65,7 @@ class Subject: NSObject, NSCoding, NSSecureCoding {
         aCoder.encode(weekNumber, forKey: Key.weekNumber.rawValue)
         aCoder.encode(subgroup, forKey: Key.subgroup.rawValue)
         aCoder.encode(subjectType, forKey: Key.subjectType.rawValue)
+        aCoder.encode(notes, forKey: Key.notes.rawValue)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -73,7 +76,8 @@ class Subject: NSObject, NSCoding, NSSecureCoding {
         let weekNumber = aDecoder.decodeObject(forKey: Key.weekNumber.rawValue) as! [Int]
         let subgroup = aDecoder.decodeInteger(forKey: Key.subgroup.rawValue)
         let subjectType = aDecoder.decodeObject(forKey: Key.subjectType.rawValue) as! String
-        self.init(title: title, auditory: auditory, time: time, teachers: teachers, weekNumber: weekNumber, subgroup: subgroup, subjectType: subjectType)
+        let notes = aDecoder.decodeObject(forKey: Key.notes.rawValue) as! String
+        self.init(title: title, auditory: auditory, time: time, teachers: teachers, weekNumber: weekNumber, subgroup: subgroup, subjectType: subjectType, notes: notes)
     }
     
 }

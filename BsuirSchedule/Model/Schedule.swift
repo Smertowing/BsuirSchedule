@@ -42,6 +42,7 @@ class ScheduleMain {
             if let studSchedules = Parser.getSchedule(forGroup: self.selectedGroup!) {
                 self.studSchedules.append(studSchedules)
             }
+            self.lastUpdate = Parser.getLastUpdate(forGroup: self.selectedGroup!)
             self.allGroupsAndWeek?.availableGroups = Parser.getGroups() ?? []
         }
     }
