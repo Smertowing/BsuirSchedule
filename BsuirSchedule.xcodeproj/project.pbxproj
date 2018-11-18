@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		08967E57065242942D974417 /* Pods_BsuirSchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0475F25D4F0A6464F4C497 /* Pods_BsuirSchedule.framework */; };
 		F33DAC1D217E5105006C65C5 /* EmployeeScheduleJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DAC1C217E5105006C65C5 /* EmployeeScheduleJSON.swift */; };
 		F33DAC25217E5196006C65C5 /* ListsJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DAC24217E5196006C65C5 /* ListsJSON.swift */; };
 		F33DAC27217E51C9006C65C5 /* DateAndWeekJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33DAC26217E51C9006C65C5 /* DateAndWeekJSON.swift */; };
@@ -30,9 +29,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C0475F25D4F0A6464F4C497 /* Pods_BsuirSchedule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BsuirSchedule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6C7C21292A15CDF86CB9B030 /* Pods-BsuirSchedule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BsuirSchedule.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BsuirSchedule/Pods-BsuirSchedule.debug.xcconfig"; sourceTree = "<group>"; };
-		9A4A555EF88C146F2BD80D96 /* Pods-BsuirSchedule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BsuirSchedule.release.xcconfig"; path = "Pods/Target Support Files/Pods-BsuirSchedule/Pods-BsuirSchedule.release.xcconfig"; sourceTree = "<group>"; };
 		F33DAC1C217E5105006C65C5 /* EmployeeScheduleJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeScheduleJSON.swift; sourceTree = "<group>"; };
 		F33DAC24217E5196006C65C5 /* ListsJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsJSON.swift; sourceTree = "<group>"; };
 		F33DAC26217E51C9006C65C5 /* DateAndWeekJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndWeekJSON.swift; sourceTree = "<group>"; };
@@ -61,30 +57,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08967E57065242942D974417 /* Pods_BsuirSchedule.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		08BD88DB3C2EEF21E965F814 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6C7C21292A15CDF86CB9B030 /* Pods-BsuirSchedule.debug.xcconfig */,
-				9A4A555EF88C146F2BD80D96 /* Pods-BsuirSchedule.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		A80CBAF2C8C1C7A432DFEEE2 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1C0475F25D4F0A6464F4C497 /* Pods_BsuirSchedule.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		F30D9A03219A08AB00BF845F /* ScheduleClasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,8 +102,6 @@
 			children = (
 				F3C1652621734C0D0019BC9B /* BsuirSchedule */,
 				F3C1652521734C0D0019BC9B /* Products */,
-				08BD88DB3C2EEF21E965F814 /* Pods */,
-				A80CBAF2C8C1C7A432DFEEE2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,11 +145,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3C1653621734C0E0019BC9B /* Build configuration list for PBXNativeTarget "BsuirSchedule" */;
 			buildPhases = (
-				64DF8AE62B268D5A880295B2 /* [CP] Check Pods Manifest.lock */,
 				F3C1652021734C0D0019BC9B /* Sources */,
 				F3C1652121734C0D0019BC9B /* Frameworks */,
 				F3C1652221734C0D0019BC9B /* Resources */,
-				E9C0A2E8778F304E73C8E820 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -229,53 +203,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		64DF8AE62B268D5A880295B2 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BsuirSchedule-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E9C0A2E8778F304E73C8E820 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BsuirSchedule/Pods-BsuirSchedule-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/sqlite3/sqlite3.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/sqlite3.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BsuirSchedule/Pods-BsuirSchedule-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F3C1652021734C0D0019BC9B /* Sources */ = {
@@ -441,7 +368,6 @@
 		};
 		F3C1653721734C0E0019BC9B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6C7C21292A15CDF86CB9B030 /* Pods-BsuirSchedule.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -460,7 +386,6 @@
 		};
 		F3C1653821734C0E0019BC9B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9A4A555EF88C146F2BD80D96 /* Pods-BsuirSchedule.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
