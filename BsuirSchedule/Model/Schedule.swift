@@ -10,13 +10,13 @@ import Foundation
 
 class ScheduleMain {
     
-    static var lastUpdate: Date? = Date(timeIntervalSinceReferenceDate: 0)
-    static var allGroupsAndWeek: GroupsAndWeek? = GroupsAndWeek.init(availableGroups: [])
-    static var studSchedules: [StudSchedule] = []
-    static var selectedGroup: String? = "751006"
-    static var selectedSubgroup: Int? = 0
-    static var dURL: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-    static var selectedWeeks: [Bool] = [true, true, true, true]
+    var lastUpdate: Date? = Date(timeIntervalSinceReferenceDate: 0)
+    var allGroupsAndWeek: GroupsAndWeek? = GroupsAndWeek.init(availableGroups: [])
+    var studSchedules: [StudSchedule] = []
+    var selectedGroup: String? = "751006"
+    var selectedSubgroup: Int? = 0
+    var dURL: URL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    var selectedWeeks: [Bool] = [true, true, true, true]
     
     enum Keys: String {
         case schedules = "schedules.brakh"
@@ -26,7 +26,27 @@ class ScheduleMain {
         case groups = "groups.brakh"
     }
     
-    static func saveData() {
+    init() {
+        if self.loadData() {
+            if let tempLastUpate = Parser.getLastUpdate(forGroup: self.selectedGroup!) {
+                if  tempLastUpate > self.lastUpdate! {
+                    if let studSchedules = Parser.getSchedule(forGroup: selectedGroup!) {
+                        self.studSchedules.append(studSchedules)
+                        self.lastUpdate = tempLastUpate
+                    }
+                    self.allGroupsAndWeek?.availableGroups = Parser.getGroups() ?? []
+                }
+                
+            }
+        } else {
+            if let studSchedules = Parser.getSchedule(forGroup: self.selectedGroup!) {
+                self.studSchedules.append(studSchedules)
+            }
+            self.allGroupsAndWeek?.availableGroups = Parser.getGroups() ?? []
+        }
+    }
+    
+    func saveData() {
         do {
             try saveSchedules()
             try saveSettings()
@@ -36,7 +56,7 @@ class ScheduleMain {
         }
     }
     
-    static func loadData() -> Bool {
+    func loadData() -> Bool {
         let dataURL: URL = dURL
         guard let codedGroup = try? Data(contentsOf: dataURL.appendingPathComponent("selected").appendingPathComponent(Keys.selectedGroup.rawValue)) else { return false }
         selectedGroup = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(codedGroup) as? String
@@ -56,7 +76,7 @@ class ScheduleMain {
         return true
     }
     
-    private static func saveSchedules() throws {
+    private func saveSchedules() throws {
         let dataURL = dURL.appendingPathComponent(selectedGroup!)
         try? FileManager.default.createDirectory(at: dataURL, withIntermediateDirectories: true, attributes: nil)
         
@@ -64,7 +84,7 @@ class ScheduleMain {
         try codedData.write(to: dataURL.appendingPathComponent(Keys.schedules.rawValue))
     }
     
-    private static func saveSettings() throws {
+    private func saveSettings() throws {
         let dataURL = dURL.appendingPathComponent("selected")
         
         try? FileManager.default.createDirectory(at: dataURL, withIntermediateDirectories: true, attributes: nil)
@@ -79,14 +99,12 @@ class ScheduleMain {
         try codedLastUpdate.write(to: dataURL.appendingPathComponent(Keys.lastUpdate.rawValue))
     }
     
-    private static func saveGroups() throws {
+    private func saveGroups() throws {
         let dataURL = dURL.appendingPathComponent("allGroups")
         try? FileManager.default.createDirectory(at: dataURL, withIntermediateDirectories: true, attributes: nil)
         
         let codedAllGroups = try! NSKeyedArchiver.archivedData(withRootObject: allGroupsAndWeek!, requiringSecureCoding: true)
         try codedAllGroups.write(to: dataURL.appendingPathComponent(Keys.groups.rawValue))
     }
-    
-    private init() {}
     
 }

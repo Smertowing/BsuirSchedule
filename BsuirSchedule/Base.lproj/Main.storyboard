@@ -156,7 +156,6 @@
         <!--Subject-->
         <scene sceneID="bsy-n4-bUm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="acu-FP-NMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="subjectVC" id="hX2-bo-iin" customClass="SubjectViewController" customModule="BsuirSchedule" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gWk-9K-yo3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -319,6 +318,7 @@
                         <outlet property="weekNumber" destination="G1C-la-iyd" id="BOZ-Ji-wyr"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="acu-FP-NMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-191.19999999999999" y="1214.8425787106448"/>
         </scene>
@@ -492,15 +492,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" editingAccessoryType="checkmark" id="Q6p-QJ-EYY">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" editingAccessoryType="checkmark" id="Q6p-QJ-EYY">
                                         <rect key="frame" x="0.0" y="435.5" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q6p-QJ-EYY" id="fce-Xu-blX">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Only current" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAP-ib-Gid">
-                                                    <rect key="frame" x="16" y="11" width="311" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="343" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

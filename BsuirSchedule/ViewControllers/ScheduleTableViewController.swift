@@ -10,39 +10,23 @@ import UIKit
 
 class ScheduleTableViewController: UITableViewController {
 
+    var userSchedule: ScheduleMain!
     var schedule: StudSchedule?
     var selectedIndexPath: IndexPath?
     
     func loadSettings() {
-        if ScheduleMain.loadData() {
-            if let tempLastUpate = Parser.getLastUpdate(forGroup: ScheduleMain.selectedGroup!) {
-                if  tempLastUpate > ScheduleMain.lastUpdate! {
-                    if let studSchedules = Parser.getSchedule(forGroup: ScheduleMain.selectedGroup!, subgroup: ScheduleMain.selectedSubgroup!) {
-                        ScheduleMain.studSchedules.append(studSchedules)
-                        ScheduleMain.lastUpdate = tempLastUpate
-                    }
-                    ScheduleMain.allGroupsAndWeek?.availableGroups = Parser.getGroups() ?? []
-                }
-                
-            }
-        } else {
-            if let studSchedules = Parser.getSchedule(forGroup: ScheduleMain.selectedGroup!, subgroup: ScheduleMain.selectedSubgroup!) {
-                ScheduleMain.studSchedules.append(studSchedules)
-            }
-            ScheduleMain.allGroupsAndWeek?.availableGroups = Parser.getGroups() ?? []
-        }
-        
-        var schedule = ScheduleMain.studSchedules.filter{$0.title == ScheduleMain.selectedGroup}
+        userSchedule = ScheduleMain()
+        var schedule = userSchedule.studSchedules.filter{$0.title == userSchedule.selectedGroup}
         if schedule.count > 0 { self.schedule = schedule[0] }
         self.tableView.reloadData()
-        self.title = ScheduleMain.selectedGroup
-        ScheduleMain.saveData()
+        self.title = userSchedule.selectedGroup
+        userSchedule.saveData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadSettings()
-        ScheduleMain.allGroupsAndWeek?.currentWeek = Parser.getCurrentWeek()
+        userSchedule.allGroupsAndWeek?.currentWeek = Parser.getCurrentWeek()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -79,6 +63,7 @@ class ScheduleTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let settingsTableViewController = segue.destination as? SettingsTableViewController {
             settingsTableViewController.delegate = self
+            settingsTableViewController.userSchedule = userSchedule
         } 
     }
 
@@ -92,25 +77,31 @@ extension ScheduleTableViewController: SettingsTableViewControllerDelegate {
     
     
     func SettingsTableViewControllerDidUpdated(_ controller: SettingsTableViewController) {
-        var schedule = ScheduleMain.studSchedules.filter{($0.title == ScheduleMain.selectedGroup) && ($0.subgroup == ScheduleMain.selectedSubgroup || ScheduleMain.selectedSubgroup == 0)}
-        if schedule.count == 0 {
-            if let studSchedules = Parser.getSchedule(forGroup: ScheduleMain.selectedGroup!, subgroup: ScheduleMain.selectedSubgroup!) {
-                ScheduleMain.studSchedules.append(studSchedules)
-                schedule = ScheduleMain.studSchedules.filter{($0.title == ScheduleMain.selectedGroup) && ($0.subgroup == ScheduleMain.selectedSubgroup)}
-                if schedule.count > 0 { self.schedule = schedule[0] }
-                ScheduleMain.saveData()
+        
+        var tempSchedule = ScheduleMain()
+        var schedules = tempSchedule.studSchedules.filter{($0.title == tempSchedule.selectedGroup)}
+        if schedules.count == 0 {
+            if let studSchedules = Parser.getSchedule(forGroup: userSchedule.selectedGroup!) {
+                userSchedule.studSchedules.append(studSchedules)
+                userSchedule.saveData()
+                tempSchedule = ScheduleMain()
+                schedules = tempSchedule.studSchedules.filter{($0.title == tempSchedule.selectedGroup)}
+                self.schedule = schedules[0]
             }
         } else {
-            if schedule.count > 0 { self.schedule = schedule[0] }
-            ScheduleMain.saveData()
+            userSchedule.saveData()
+            self.schedule = schedules[0]
         }
+        
         for schedule in self.schedule?.schedule ?? [] {
             schedule.subjects = schedule.subjects.filter{
-                if ($0.subgroup != 0) && ($0.subgroup != ScheduleMain.selectedSubgroup) {
-                    return false
+                if ($0.subgroup != 0) && ($0.subgroup != userSchedule.selectedSubgroup) {
+                    if userSchedule.selectedSubgroup != 0 {
+                        return false
+                    }
                 }
                 for i in $0.weekNumber {
-                    if ScheduleMain.selectedWeeks[i-1] {
+                    if userSchedule.selectedWeeks[i-1] {
                         return true
                     }
                 }
@@ -118,7 +109,7 @@ extension ScheduleTableViewController: SettingsTableViewControllerDelegate {
             }
         }
         self.tableView.reloadData()
-        self.title = ScheduleMain.selectedGroup
+        self.title = userSchedule.selectedGroup
         navigationController?.popViewController(animated: true)
     }
     

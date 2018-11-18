@@ -14,7 +14,7 @@ protocol SubjectViewControllerDelegate: class {
 }
 
 
-class SubjectViewController: UIViewController, UITextFieldDelegate {
+class SubjectViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var lessonTime: UILabel!
     @IBOutlet weak var lessonType: UIImageView!
@@ -32,6 +32,10 @@ class SubjectViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        
         notesField.delegate = self
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
@@ -78,6 +82,10 @@ class SubjectViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func updateTapped(_ sender: Any) {
         delegate?.SubjectViewControllerDidUpdated(self, updatedNotes: notesField.text)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
 }

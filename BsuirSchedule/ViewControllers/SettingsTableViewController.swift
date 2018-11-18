@@ -13,7 +13,7 @@ protocol SettingsTableViewControllerDelegate: class {
     func SettingsTableViewControllerDidUpdated(_ controller: SettingsTableViewController)
 }
 
-class SettingsTableViewController: UITableViewController {
+class SettingsTableViewController: UITableViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet var settingsTable: UITableView!
     @IBOutlet weak var subgroupControl: UISegmentedControl!
@@ -23,14 +23,18 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var cancekBarItem: UIBarButtonItem!
     
     var groups: [String]?
+    weak var userSchedule: ScheduleMain!
     weak var delegate: SettingsTableViewControllerDelegate?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         groupCell.delegate = self
-        groupCell.text = ScheduleMain.selectedGroup
+        groupCell.text = userSchedule.selectedGroup ?? "Group"
         groups?.sort()
-        subgroupControl.selectedSegmentIndex = ScheduleMain.selectedSubgroup ?? 0
+        subgroupControl.selectedSegmentIndex = userSchedule.selectedSubgroup ?? 0
     }
     
     @IBAction func cancel(_ sender: Any) {
@@ -52,15 +56,15 @@ class SettingsTableViewController: UITableViewController {
     @IBAction func groupDidEdited(_ sender: UITextField) {
         if groups != nil {
             if groups!.contains(sender.text ?? "0") {
-                ScheduleMain.selectedGroup = sender.text
+                userSchedule.selectedGroup = sender.text
             }
         } else {
-            ScheduleMain.selectedGroup = sender.text
+            userSchedule.selectedGroup = sender.text
         }
     }
     
     @IBAction func subgroupValueChanged(_ sender: UISegmentedControl) {
-        ScheduleMain.selectedSubgroup = sender.selectedSegmentIndex
+        userSchedule.selectedSubgroup = sender.selectedSegmentIndex
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -74,12 +78,12 @@ class SettingsTableViewController: UITableViewController {
                         for i in 0..<4 {
                             var indexPathTemp = indexPath
                             indexPathTemp.row = i
-                            if i == ScheduleMain.allGroupsAndWeek?.currentWeek {
+                            if i == userSchedule.allGroupsAndWeek?.currentWeek {
                                 tableView.cellForRow(at: indexPathTemp)?.accessoryType = .checkmark
-                                ScheduleMain.selectedWeeks[i] = true
+                                userSchedule.selectedWeeks[i] = true
                             } else {
                                 tableView.cellForRow(at: indexPathTemp)?.accessoryType = .none
-                                ScheduleMain.selectedWeeks[i] = false
+                                userSchedule.selectedWeeks[i] = false
                             }
                         }
                         cell.accessoryType = .checkmark
@@ -90,10 +94,14 @@ class SettingsTableViewController: UITableViewController {
                     } else {
                         cell.accessoryType = .checkmark
                     }
-                    ScheduleMain.selectedWeeks[indexPath.row].toggle()
+                    userSchedule.selectedWeeks[indexPath.row].toggle()
                 }
             }
         }
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
 }

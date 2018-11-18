@@ -15,32 +15,27 @@ class StudSchedule: NSObject, NSCoding, NSSecureCoding {
     }
     
     var title: String
-    var subgroup: Int
     var schedule: [Weekday] = []
     
-    init(title: String, schedule: [Weekday], subgroup: Int) {
+    init(title: String, schedule: [Weekday]) {
         self.title = title
         self.schedule = schedule
-        self.subgroup = subgroup
     }
     
     private enum Key: String {
         case title = "title"
-        case subgroup = "subgroup"
         case schedule = "schedule"
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(title, forKey: Key.title.rawValue)
-        aCoder.encode(subgroup.hashValue, forKey: Key.subgroup.rawValue)
         aCoder.encode(schedule, forKey: Key.schedule.rawValue)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
         let title = aDecoder.decodeObject(forKey: Key.title.rawValue) as! String
-        let subgroup = aDecoder.decodeInteger(forKey: Key.subgroup.rawValue) 
         let schedule = aDecoder.decodeObject(forKey: Key.schedule.rawValue) as! [Weekday]
-        self.init(title: title, schedule: schedule, subgroup: subgroup)
+        self.init(title: title, schedule: schedule)
     }
     
 }

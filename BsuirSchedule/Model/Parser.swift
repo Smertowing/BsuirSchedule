@@ -68,7 +68,7 @@ class Parser {
         }
     }
     
-    static func getSchedule(forGroup numGroup: String, subgroup: Int) -> StudSchedule? {
+    static func getSchedule(forGroup numGroup: String) -> StudSchedule? {
         guard let scheduleURL: URL = URL(string: groupScheduleHTTP+"?studentGroup=\(numGroup)") else {
             return nil
         }
@@ -87,7 +87,6 @@ class Parser {
                         time += subject.endLessonTime ?? ""
                         let weekNumber = subject.weekNumber!.filter { return $0 != 0 }
                         let tempsubgroup = subject.numSubgroup ?? 0
-                        guard (tempsubgroup == subgroup) || (tempsubgroup == 0) || (subgroup == 0) else { continue }
                         var teachers: [Teacher] = []
                         for teacher in subject.employee! {
                             var fullName = teacher.lastName ?? ""
@@ -106,7 +105,7 @@ class Parser {
                     }
                     tempShedules.append(Weekday(title: schedule.weekDay!, subjects: tempSubjects))
                 }
-                return StudSchedule(title: numGroup, schedule: tempShedules, subgroup: subgroup)
+                return StudSchedule(title: numGroup, schedule: tempShedules)
             } catch {
                 return nil
             }
