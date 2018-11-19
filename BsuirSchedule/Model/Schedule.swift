@@ -24,6 +24,7 @@ class ScheduleMain {
         case selectedSubgroup = "selectedSubgroup.brakh"
         case lastUpdate = "lastUpdate.brakh"
         case groups = "groups.brakh"
+        case weeks = "weeks.brakh"
     }
     
     init() {
@@ -68,6 +69,9 @@ class ScheduleMain {
         guard let codedLastUpdate = try? Data(contentsOf: dataURL.appendingPathComponent("selected").appendingPathComponent(Keys.lastUpdate.rawValue)) else { return false }
         lastUpdate = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(codedLastUpdate) as? Date
         
+        guard let codedWeeks = try? Data(contentsOf: dataURL.appendingPathComponent("selected").appendingPathComponent(Keys.weeks.rawValue)) else { return false }
+        selectedWeeks = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(codedWeeks) as! [Bool]
+        
         guard let codedData = try? Data(contentsOf: dataURL.appendingPathComponent(selectedGroup!).appendingPathComponent(Keys.schedules.rawValue)) else { return false }
         studSchedules = try! (NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(codedData) as? [StudSchedule])!
         
@@ -98,6 +102,9 @@ class ScheduleMain {
         
         let codedLastUpdate = try! NSKeyedArchiver.archivedData(withRootObject: lastUpdate!, requiringSecureCoding: true)
         try codedLastUpdate.write(to: dataURL.appendingPathComponent(Keys.lastUpdate.rawValue))
+        
+        let codedWeeks = try! NSKeyedArchiver.archivedData(withRootObject: selectedWeeks, requiringSecureCoding: true)
+        try codedWeeks.write(to: dataURL.appendingPathComponent(Keys.weeks.rawValue))
     }
     
     private func saveGroups() throws {
