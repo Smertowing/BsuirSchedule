@@ -86,13 +86,11 @@ class ScheduleTableViewController: UITableViewController {
 }
 
 extension ScheduleTableViewController: SettingsTableViewControllerDelegate {
-    
-    func SettingsTableViewControllerDidCancel(_ controller: SettingsTableViewController) {
-        navigationController?.popViewController(animated: true)
-    }
-    
-    
-    func SettingsTableViewControllerDidUpdated(_ controller: SettingsTableViewController) {
+    func SettingsTableViewControllerDidUpdated(_ controller: SettingsTableViewController, newGroup: String, newSubgroup: Int, newWeeks: [Bool]) {
+        userSchedule.selectedGroup = newGroup
+        userSchedule.selectedSubgroup = newSubgroup
+        userSchedule.selectedWeeks = newWeeks
+        userSchedule.saveData()
         
         var tempSchedule = ScheduleMain()
         var schedules = tempSchedule.studSchedules.filter{($0.title == tempSchedule.selectedGroup)}
@@ -128,6 +126,12 @@ extension ScheduleTableViewController: SettingsTableViewControllerDelegate {
         self.title = userSchedule.selectedGroup
         navigationController?.popViewController(animated: true)
     }
+    
+    
+    func SettingsTableViewControllerDidCancel(_ controller: SettingsTableViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+
     
 }
 

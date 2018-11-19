@@ -10,7 +10,7 @@ import UIKit
 
 protocol SettingsTableViewControllerDelegate: class {
     func SettingsTableViewControllerDidCancel(_ controller: SettingsTableViewController)
-    func SettingsTableViewControllerDidUpdated(_ controller: SettingsTableViewController)
+    func SettingsTableViewControllerDidUpdated(_ controller: SettingsTableViewController, newGroup: String, newSubgroup: Int, newWeeks: [Bool] )
 }
 
 class SettingsTableViewController: UITableViewController, UIGestureRecognizerDelegate {
@@ -21,8 +21,11 @@ class SettingsTableViewController: UITableViewController, UIGestureRecognizerDel
     @IBOutlet weak var groupCell: UITextField!
     @IBOutlet weak var updateBarItem: UIBarButtonItem!
     @IBOutlet weak var cancekBarItem: UIBarButtonItem!
+
+    var group: String = ""
+    var subgroup: Int = 0
+    var weeks: [Bool] = []
     
-    var groups: [String]?
     weak var userSchedule: ScheduleMain!
     weak var delegate: SettingsTableViewControllerDelegate?
     
@@ -33,14 +36,16 @@ class SettingsTableViewController: UITableViewController, UIGestureRecognizerDel
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         groupCell.delegate = self
         groupCell.text = userSchedule.selectedGroup ?? "Group"
-        groups?.sort()
         subgroupControl.selectedSegmentIndex = userSchedule.selectedSubgroup ?? 0
         
+        group = userSchedule.selectedGroup ?? "Enter group"
+        subgroup = userSchedule.selectedSubgroup ?? 0
+        weeks = userSchedule.selectedWeeks
         
         for i in 0..<4 {
             let indexPath = IndexPath(row: i, section: 2)
             if let cell = settingsTable.cellForRow(at: indexPath) {
-                if userSchedule.selectedWeeks[i] { cell.accessoryType = .checkmark}
+                if weeks[i] { cell.accessoryType = .checkmark}
             }
         }
     }
@@ -50,29 +55,15 @@ class SettingsTableViewController: UITableViewController, UIGestureRecognizerDel
     }
     
     @IBAction func updateTapped(_ sender: Any) {
-        let activityView: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
-        activityView.center = self.view.center
-        activityView.hidesWhenStopped = true
-        self.view.addSubview(activityView)
-        activityView.startAnimating()
-        UIApplication.shared.beginIgnoringInteractionEvents()
-        delegate?.SettingsTableViewControllerDidUpdated(self)
-        UIApplication.shared.endIgnoringInteractionEvents()
-        activityView.stopAnimating()
+        delegate?.SettingsTableViewControllerDidUpdated(self, newGroup: groupCell.text!, newSubgroup: subgroupControl.selectedSegmentIndex, newWeeks: weeks)
     }
     
     @IBAction func groupDidEdited(_ sender: UITextField) {
-        if groups != nil {
-            if groups!.contains(sender.text ?? "0") {
-                userSchedule.selectedGroup = sender.text
-            }
-        } else {
-            userSchedule.selectedGroup = sender.text
-        }
+        
     }
     
     @IBAction func subgroupValueChanged(_ sender: UISegmentedControl) {
-        userSchedule.selectedSubgroup = sender.selectedSegmentIndex
+        subgroup = sender.selectedSegmentIndex
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -88,10 +79,10 @@ class SettingsTableViewController: UITableViewController, UIGestureRecognizerDel
                             indexPathTemp.row = i
                             if i == userSchedule.allGroupsAndWeek?.currentWeek {
                                 tableView.cellForRow(at: indexPathTemp)?.accessoryType = .checkmark
-                                userSchedule.selectedWeeks[i] = true
+                                weeks[i] = true
                             } else {
                                 tableView.cellForRow(at: indexPathTemp)?.accessoryType = .none
-                                userSchedule.selectedWeeks[i] = false
+                                weeks[i] = false
                             }
                         }
                         cell.accessoryType = .checkmark
@@ -102,7 +93,7 @@ class SettingsTableViewController: UITableViewController, UIGestureRecognizerDel
                     } else {
                         cell.accessoryType = .checkmark
                     }
-                    userSchedule.selectedWeeks[indexPath.row].toggle()
+                    weeks[indexPath.row].toggle()
                 }
             }
         }
@@ -111,7 +102,7 @@ class SettingsTableViewController: UITableViewController, UIGestureRecognizerDel
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.section == 2 {
             if indexPath.row < 4 {
-                if userSchedule.selectedWeeks[indexPath.row] {
+                if weeks[indexPath.row] {
                     cell.accessoryType = .checkmark
                 }
             }
@@ -127,6 +118,16 @@ class SettingsTableViewController: UITableViewController, UIGestureRecognizerDel
 extension SettingsTableViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if userSchedule.allGroupsAndWeek?.availableGroups != nil {
+            if (userSchedule.allGroupsAndWeek?.availableGroups!.contains(textField.text!)) ?? false {
+                group = textField.text!
+                updateBarItem.isEnabled = true
+            } else {
+                updateBarItem.isEnabled = false
+            }
+        } else {
+            updateBarItem.isEnabled = false
+        }
         groupCell.resignFirstResponder()
         return false
     }
