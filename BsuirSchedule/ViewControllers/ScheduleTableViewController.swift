@@ -16,11 +16,27 @@ class ScheduleTableViewController: UITableViewController {
     
     func loadSettings() {
         userSchedule = ScheduleMain()
-        var schedule = userSchedule.studSchedules.filter{$0.title == userSchedule.selectedGroup}
-        if schedule.count > 0 { self.schedule = schedule[0] }
-        self.tableView.reloadData()
-        self.title = userSchedule.selectedGroup
         userSchedule.saveData()
+        var schedules = userSchedule.studSchedules.filter{$0.title == userSchedule.selectedGroup}
+        if schedules.count > 0 { self.schedule = schedules[0] }
+        for schedule in self.schedule?.schedule ?? [] {
+            schedule.subjects = schedule.subjects.filter{
+                if ($0.subgroup != 0) && ($0.subgroup != userSchedule.selectedSubgroup) {
+                    if userSchedule.selectedSubgroup != 0 {
+                        return false
+                    }
+                }
+                for i in $0.weekNumber {
+                    if userSchedule.selectedWeeks[i-1] {
+                        return true
+                    }
+                }
+                return false
+            }
+        }
+        self.title = userSchedule.selectedGroup
+        self.tableView.reloadData()
+        
     }
     
     override func viewDidLoad() {
